@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d17">
+
+<title>RKS · Hyperia City — Dan Arnold — Week 1 | 7 decks</title>
+<meta name="description" content="Analyse RKS de la première semaine Hyperia City : 7 archétypes, statistiques BO1/BO3, matchups, cartes clés et priorités de test.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RKS · Hyperia City — Dan Arnold — Week 1 | 7 decks">
+<meta property="og:description" content="7 archétypes passés au crible : Emerald Steel, Detectives, Circle of Life, Princess Aggro, Amethyst Steel, Mouse House et Ruby Amethyst.">
+<meta property="og:image" content="https://i.ytimg.com/vi/iKc1CkkTKK4/maxresdefault.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RKS · Hyperia City — Dan Arnold — Week 1 | 7 decks">
+<meta name="twitter:description" content="Analyse méta RKS · 7 decks · BO1/BO3 · matchups · cartes clés.">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/iKc1CkkTKK4/maxresdefault.jpg">
+
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#080d17;--bg2:#0d1423;--panel:#121d31;--panel2:#17243a;
+  --line:#31435e;--line2:#4c6383;--text:#edf3ff;--muted:#9fb1cd;
+  --gold:#efc57e;--green:#48d39b;--amber:#f0bd55;--sapphire:#5ab2ff;
+  --amethyst:#b486ff;--steel:#b8cbd9;--ruby:#f06d78;--danger:#f4878f;
+  --ok:#75dfae;--shadow:0 22px 60px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-width:320px;color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(95,64,150,.26) 0,transparent 32%),
+    radial-gradient(ellipse at 92% 15%,rgba(31,108,145,.20) 0,transparent 35%),
+    var(--bg);
+}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #78d4ff;outline-offset:3px}
+.wrap{max-width:1420px;margin:auto;padding:0 24px}
+.topbar{
+  position:sticky;top:0;z-index:100;background:rgba(7,12,21,.92);
+  backdrop-filter:blur(15px);border-bottom:1px solid #34445d
+}
+.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:2px}
+.logo{width:54px;height:53px;display:grid;place-items:center;overflow:hidden;flex:0 0 54px}
+.logo img{display:block;width:54px;height:53px;object-fit:contain}
+.brand small{display:block;color:var(--gold);font-size:.61rem;letter-spacing:2.5px;font-weight:700}
+.nav{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+.nav a{font-size:.81rem;color:var(--muted)}
+.nav a:hover{color:#fff}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 15px;min-height:42px;border-radius:12px;
+  border:1px solid #52708f;background:#19344b;color:#eef9ff;font-weight:800;font-size:.84rem
+}
+.btn:hover{background:#244b67}
+.btn.gold{background:#d9aa63;color:#162033;border-color:#ebcb93}
+.btn.ghost{background:#172339}
+.hero{padding:58px 0 26px}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:32px;align-items:center}
+.eyebrow{font-size:.7rem;letter-spacing:3px;color:var(--gold);font-weight:900;text-transform:uppercase}
+h1{font-size:clamp(2.45rem,5.7vw,5rem);line-height:1.03;letter-spacing:-2.8px;margin:16px 0 15px}
+.gradient{
+  background:linear-gradient(95deg,#d7b5ff,#acd2ff,#72d6e9);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.lead{color:var(--muted);max-width:850px;line-height:1.75;font-size:1.04rem}
+.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.heroMedia{position:relative;border:1px solid #536783;border-radius:20px;overflow:hidden;background:#0b1422;box-shadow:var(--shadow)}
+.heroMedia img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.heroMedia:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(5,9,16,.92));pointer-events:none}
+.mediaTag{position:absolute;z-index:2;left:16px;bottom:14px;background:#0a1120e8;border:1px solid #576a84;padding:8px 11px;border-radius:10px;font-size:.74rem;font-weight:850}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:34px}
+.stat{padding:18px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#17243a,#101929)}
+.stat b{display:block;font-size:2rem;line-height:1.08}
+.stat span{font-size:.76rem;color:var(--muted)}
+.notice{margin-top:18px;border-left:3px solid var(--gold);background:#171b29;padding:13px 16px;border-radius:0 12px 12px 0;color:#d1dbea;font-size:.88rem;line-height:1.6}
+.section{padding-top:61px;scroll-margin-top:86px}
+.section h2{font-size:clamp(1.65rem,3vw,2.5rem);margin:10px 0 9px;letter-spacing:-1px}
+.desc{color:var(--muted);line-height:1.72;max-width:960px}
+.panel{background:linear-gradient(140deg,#142036,#0f192a);border:1px solid var(--line);border-radius:18px;padding:21px}
+.panel h3{margin:2px 0 9px;font-size:1.08rem}
+.panel p,.panel li{color:var(--muted);line-height:1.68;font-size:.89rem}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.kpiBig{font-size:2.1rem;font-weight:950;margin-bottom:4px}
+.kpiSmall{color:var(--muted);font-size:.76rem}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0 15px}
+.search,.select{
+  min-height:43px;border:1px solid #425a78;background:#101b2e;color:#fff;border-radius:12px;padding:10px 13px
+}
+.search{flex:1 1 250px}
+.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:17px;background:#0f1828}
+table{width:100%;border-collapse:collapse;min-width:1020px}
+th,td{padding:14px 13px;text-align:left;border-bottom:1px solid #283952;vertical-align:middle}
+th{position:sticky;top:0;background:#172238;color:#afc0d8;font-size:.71rem;text-transform:uppercase;letter-spacing:.08em}
+td{font-size:.86rem;color:#dbe6f4}
+tr:last-child td{border-bottom:0}
+tr:hover td{background:rgba(255,255,255,.018)}
+.deckName{font-weight:900;display:flex;align-items:center;gap:9px}
+.inks{display:inline-flex;gap:4px}
+.dot{width:11px;height:11px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.tag{
+  display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;border:1px solid #445c79;
+  background:#17273c;color:#bed0e7;font-size:.7rem;font-weight:850
+}
+.tag.good{border-color:#337b65;background:#12352c;color:#a6f0d0}
+.tag.watch{border-color:#8e6b37;background:#3a2b17;color:#f1cc8f}
+.tag.bad{border-color:#8e4650;background:#3a1f27;color:#ffc0c5}
+.tag.info{border-color:#5a5693;background:#242143;color:#d7ccff}
+.win{font-weight:900;font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.deckGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.deckCard{position:relative;overflow:hidden;padding:22px;border-radius:19px;border:1px solid var(--line);background:linear-gradient(145deg,#162238,#101928)}
+.deckCard:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent,#6ebee7)}
+.deckTop{display:flex;justify-content:space-between;gap:13px;align-items:start}
+.deckCard h3{margin:0 0 4px;font-size:1.28rem}
+.deckCard .sub{font-size:.77rem;color:var(--muted)}
+.score{font-size:1.7rem;font-weight:950;color:var(--score,#eac47e);white-space:nowrap}
+.deckMetrics{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+.metric{padding:7px 9px;border:1px solid #384c68;border-radius:10px;background:#101c30;font-size:.75rem;color:#c8d6e8}
+.deckCard p{color:var(--muted);line-height:1.7;font-size:.89rem}
+.deckCard ul{margin:10px 0 0;padding-left:18px}
+.deckCard li{color:#c4d0e1;line-height:1.65;font-size:.84rem;margin:4px 0}
+.deckActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.miniBtn{border:1px solid #415c7b;background:#162a40;border-radius:10px;padding:8px 10px;font-size:.73rem;font-weight:850}
+.miniBtn:hover{background:#23425e}
+.matchGrid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:18px}
+.triangle{min-height:360px;position:relative;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 45%,#1b2c43,#0d1626 72%);overflow:hidden}
+.node{position:absolute;transform:translate(-50%,-50%);width:184px;text-align:center;padding:13px 12px;border-radius:15px;border:1px solid #536984;background:#15233a;box-shadow:0 10px 30px rgba(0,0,0,.2);font-weight:900;line-height:1.18}
+.node small{display:block;margin-top:6px;color:var(--muted);font-weight:600;font-size:.68rem;line-height:1.3}
+.n1{left:50%;top:18%}.n2{left:24%;top:72%}.n3{left:76%;top:72.5%}
+.arrow{position:absolute;font-size:.76rem;color:#d9c58d;font-weight:850;width:196px;text-align:center;line-height:1.15}
+.a1{left:23%;top:43%;transform:rotate(-30deg)}
+.a2{left:57%;top:42%;transform:rotate(30deg)}
+.a3{left:38%;top:78%}
+.greenHalo{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:86%;height:76%;border:1px dashed rgba(69,214,154,.38);border-radius:50%;pointer-events:none}
+.matchNotes{display:grid;gap:10px}
+.matchNote{border:1px solid #354961;background:#101b2d;border-radius:14px;padding:14px}
+.matchNote b{display:block;margin-bottom:4px}
+.matchNote span{font-size:.82rem;color:var(--muted);line-height:1.55}
+.cardGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:11px;margin-top:18px}
+.cardUnit{border:1px solid #354961;background:#111c2e;border-radius:15px;padding:8px;position:relative}
+.cardUnit img{display:block;width:100%;aspect-ratio:734/1024;object-fit:contain;border-radius:9px;background:#0b1320;cursor:zoom-in}
+.cardUnit h4{margin:8px 2px 2px;font-size:.76rem;line-height:1.25}
+.cardUnit p{margin:0 2px;color:var(--muted);font-size:.67rem;line-height:1.25}
+.cardLabel{position:absolute;top:13px;right:13px;background:#08111be8;border:1px solid #6b8098;padding:4px 6px;border-radius:7px;font-size:.6rem;font-weight:900}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:17px}
+.chapter{display:flex;gap:12px;padding:14px;border:1px solid #354861;background:#111c2e;border-radius:14px;transition:transform .15s,border-color .15s}
+.chapter:hover{transform:translateY(-2px);border-color:#d6b06e}
+.chapter time{font-weight:950;color:var(--gold);font-size:.78rem}
+.chapter strong{font-size:.82rem;line-height:1.3}
+.chapter p{margin:4px 0 0;color:var(--muted);font-size:.72rem;line-height:1.45}
+.testGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:15px}
+.test{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid #354960;border-radius:14px;background:#111b2c}
+.test input{width:19px;height:19px;accent-color:#84cfae;margin-top:2px}
+.test b{display:block;font-size:.86rem}.test span{display:block;color:var(--muted);font-size:.77rem;line-height:1.45;margin-top:3px}
+.sourceLinks{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.smallNote{font-size:.76rem;color:#8fa3bd;line-height:1.55}
+.footer{margin-top:72px;padding:31px 22px;border-top:1px solid #2d3d55;text-align:center;color:#8194ad;font-size:.76rem;line-height:1.55}.footer strong{display:block;margin-bottom:4px;color:#8fa5c0}.legalLine{display:block;max-width:1760px;margin:0 auto}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(1,4,9,.88);display:none;align-items:center;justify-content:center;padding:22px}
+.modal.open{display:flex}
+.modal img{display:block;max-width:min(520px,88vw);max-height:90vh;object-fit:contain;border-radius:14px;box-shadow:0 25px 80px #000}
+.modal button{position:absolute;right:22px;top:20px;border:1px solid #72859c;background:#162438;color:#fff;border-radius:12px;font-size:1.45rem;padding:7px 13px}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:300;background:#163b31;border:1px solid #4fa888;color:#e8fff6;padding:11px 16px;border-radius:11px;display:none;font-size:.82rem;font-weight:800}
+.hiddenRow{display:none}
+@media(max-width:1120px){
+  .heroGrid{grid-template-columns:1fr}.heroMedia{max-width:800px}
+  .cardGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .timeline{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:850px){
+  .nav a:not(.btn){display:none}.stats{grid-template-columns:repeat(2,1fr)}
+  .deckGrid,.matchGrid,.kpis{grid-template-columns:1fr}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:590px){
+  .wrap{padding:0 15px}.hero{padding-top:38px}.heroGrid{gap:20px}
+  h1{letter-spacing:-1.5px}.cardGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .timeline,.testGrid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:14px}
+  .node{width:146px;padding:10px;font-size:.76rem}.triangle{min-height:340px}.arrow{font-size:.68rem;width:150px}.a1{left:19%;top:44%}.a2{left:54%;top:43%}.a3{left:34%;top:79%}
+  .bar{min-height:65px}.logo{width:42px;height:42px}
+}
+
+/* === RKS multi-deck Deck Lab V2 === */
+.deckLabSection{padding-top:66px}.labRule{margin:20px 0;padding:14px 16px;border-left:3px solid var(--green);background:#10271f;border-radius:0 12px 12px 0;color:#cfe8dc;font-size:.86rem;line-height:1.6}.deckLabStack{display:grid;gap:14px;margin-top:22px}.deckLab{border:1px solid var(--line);border-radius:19px;background:linear-gradient(145deg,#121e32,#0d1626);overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.12)}.deckLab>summary{list-style:none;cursor:pointer;padding:17px 19px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:linear-gradient(90deg,#17243a,#111b2d)}.deckLab>summary::-webkit-details-marker{display:none}.deckLab>summary:hover{background:linear-gradient(90deg,#1c2d48,#152238)}.labSummaryLeft,.labSummaryRight{display:flex;align-items:center;gap:11px}.labSummaryLeft>span:last-child{display:flex;flex-direction:column;gap:2px}.labSummaryLeft strong{font-size:1rem}.labSummaryLeft small{font-size:.69rem;color:var(--muted)}.labIndex{font-weight:950;color:var(--gold);font-size:.76rem;min-width:24px}.labInks{display:inline-flex;gap:4px}.labDot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 1px rgba(255,255,255,.24)}.verifyBadge{font-size:.63rem;font-weight:900;letter-spacing:.06em;color:#adf1d0;border:1px solid #34775e;background:#123027;padding:6px 8px;border-radius:999px}.labGrade{font-size:1.15rem;font-weight:950;color:var(--gold);min-width:28px;text-align:center}.labBody{padding:21px}.labHero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:15px}.labHero>div{border:1px solid #30445f;background:#111c2e;border-radius:16px;padding:18px}.labVerdict{display:inline-flex;padding:5px 9px;border-radius:999px;background:#27213b;border:1px solid #645783;color:#ded2ff;font-size:.68rem;font-weight:900}.labHero h3{font-size:1.55rem;margin:10px 0 6px}.labHero p{color:var(--muted);font-size:.88rem;line-height:1.67;margin:0}.labStats{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.labStat{padding:7px 9px;background:#0c1728;border:1px solid #38506f;border-radius:9px;font-size:.72rem;font-weight:800;color:#d8e6f5}.labSource{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px}.labSource>span{font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}.labSource>b{font-size:.9rem}.labSource>small{color:var(--muted);line-height:1.5;font-size:.72rem}.labAnalysis{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:12px}.labPanel{border:1px solid #30445f;background:#101a2b;border-radius:14px;padding:15px}.labPanel.caution{border-color:#665238;background:#211c15}.labPanel h4{margin:0 0 8px;font-size:.86rem}.labPanel p,.labPanel li{font-size:.78rem;color:#bdcbdd;line-height:1.6}.labPanel ul{padding-left:18px;margin:0}.timeLink{font-size:.7rem;color:var(--gold);font-weight:850}.labTools{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.labBtn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 11px;border-radius:10px;border:1px solid #476383;background:#172d45;color:#f3f8ff;font-size:.74rem;font-weight:850;text-decoration:none}.labBtn:hover{background:#22425f}.labBtn.purple{background:#3c2c58;border-color:#8064a5}.labBtn.gold{background:#cfa15e;color:#152035;border-color:#e9c680}.labBtn.ghost{background:#141f31}.labBtn.disabled,.labBtn[aria-disabled="true"],.labBtn:disabled{opacity:.42;pointer-events:none}.deckPngBox{margin:15px 0 19px;padding:17px;border:1px solid #415773;border-radius:16px;background:linear-gradient(180deg,#121e31,#0b1422)}.deckPngHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}.deckPngHead h4{margin:5px 0 3px;font-size:1rem}.deckPngHead p{margin:0;color:var(--muted);font-size:.76rem;line-height:1.45}.pngEyebrow{font-size:.6rem;color:var(--gold);font-weight:900;letter-spacing:.09em}.pngMeta{font-size:.64rem;color:#c5b8e7;text-transform:uppercase;letter-spacing:.07em}.pngStatus{padding:9px 11px;border:1px solid #344b68;background:#0d1829;border-radius:9px;color:#a9bad0;font-size:.7rem}.pngStatus.ok{border-color:#377a62;background:#102e25;color:#b8f2d7}.pngStatus.err{border-color:#8d4550;background:#321a20;color:#ffd0d5}.pngPreview{margin-top:10px;width:100%;border:1px solid #385371;background:radial-gradient(circle at 50% 25%,#173254,#08121f 72%);border-radius:12px;min-height:165px;color:#8fa5bf;display:grid;place-items:center;overflow:hidden;padding:0}.pngPreview:not(:disabled){cursor:zoom-in}.pngPreview img{display:block;width:100%;height:auto;max-height:440px;object-fit:contain}.pngPreview.generatedPng{padding:0;background:#08111e}.pngPreview.generatedPng img{max-height:none;width:100%;height:auto}.deckPngModalContent{max-width:98vw;max-height:96vh;overflow:auto;background:#07111f;border:1px solid #536783;border-radius:14px;padding:10px}.pngPreview.hasSheet{padding:16px;display:block}.pngPreview.hasSheet img{max-height:none}.pngPreview.hasSheet>span{display:block;margin:0 0 14px;text-align:center}.previewSheet{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%}.previewCard{position:relative;border:1px solid #385371;border-radius:10px;overflow:hidden;background:#08111f;box-shadow:0 6px 16px rgba(0,0,0,.18)}.previewCard img{display:block;width:100%;height:auto;object-fit:contain;background:#091321}.previewQty{position:absolute;right:6px;top:6px;background:#efc57e;color:#172033;border-radius:8px;padding:4px 7px;font-weight:900;font-size:.82rem;box-shadow:0 3px 8px rgba(0,0,0,.28)}.deckPngModalContent{max-width:96vw;max-height:94vh;overflow:auto;background:#0b1422;border:1px solid #4b5d78;border-radius:14px;padding:16px}.deckPngModalContent img{display:block;max-width:100%;height:auto;border-radius:10px}.deckPngModalGrid{display:grid;grid-template-columns:repeat(5,minmax(135px,1fr));gap:12px}.deckPngModalGrid .previewCard{border-radius:12px}.deckPngModalGrid .previewQty{font-size:.9rem}.deckListHead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:19px 0 10px}.deckListHead h4{margin:0 0 3px;font-size:1rem}.deckListHead p{margin:0;color:var(--muted);font-size:.72rem}.deckListHead>span{font-size:.68rem;color:#b7c7dc;white-space:nowrap}.dlToolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}.dlToolbar input,.dlToolbar select{min-height:39px;background:#0e192a;border:1px solid #3c5573;color:white;border-radius:10px;padding:8px 10px;font-size:.75rem}.dlToolbar input{flex:1 1 220px}.deckListGrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.dlCard{min-width:0;border:1px solid #344a65;background:#111c2e;border-radius:12px;padding:6px;cursor:zoom-in;transition:transform .15s,border-color .15s}.dlCard:hover{transform:translateY(-2px);border-color:#caa86d}.dlImgWrap{position:relative;aspect-ratio:734/1024;overflow:hidden;border-radius:8px;background:#091321}.dlImgWrap img{display:block;width:100%;height:100%;object-fit:contain}.dlQty,.dlCost{position:absolute;top:5px;border-radius:8px;font-weight:950;box-shadow:0 3px 10px #0009}.dlQty{right:5px;background:#efc57e;color:#152035;padding:4px 7px;font-size:.83rem}.dlCost{left:5px;background:#0b1726e8;border:1px solid #8ea2ba;color:white;padding:4px 6px;font-size:.7rem}.dlText{padding:7px 2px 2px}.dlText strong{display:block;font-size:.69rem;line-height:1.28;min-height:35px}.frLabel[hidden],.enLabel[hidden]{display:none!important}.dlText small{display:block;color:#8fa4bd;font-size:.58rem;line-height:1.35;margin-top:4px}.dlCard.filtered{display:none!important}.deckCardModal{position:fixed;inset:0;z-index:260;background:rgba(1,4,9,.91);display:none;align-items:center;justify-content:center;padding:22px}.deckCardModal.open{display:flex}.deckCardModalBox{width:min(950px,96vw);max-height:92vh;overflow:auto;border:1px solid #4c617c;background:#0f192a;border-radius:18px;padding:17px;display:grid;grid-template-columns:minmax(230px,.45fr) minmax(280px,.55fr);gap:19px;position:relative}.deckCardModalBox img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;border-radius:11px}.deckCardModalText h3{font-size:1.5rem;margin:7px 0 2px}.deckCardModalText .en{color:#b6a8d8;font-size:.8rem}.deckCardModalText p{color:#b9c8db;font-size:.86rem;line-height:1.65}.deckCardModalMeta{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0}.deckCardModalMeta span{padding:6px 8px;border:1px solid #3e5877;border-radius:9px;font-size:.67rem}.deckModalClose{position:absolute;right:12px;top:12px;border:1px solid #667991;background:#18283d;color:#fff;border-radius:9px;padding:6px 10px;font-size:1.1rem}.deckPngModal{position:fixed;inset:0;z-index:270;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center;padding:20px}.deckPngModal.open{display:flex}.deckPngModal img{display:block;max-width:96vw;max-height:94vh;object-fit:contain;border-radius:10px}.deckPngModal button{position:absolute;right:20px;top:18px;border:1px solid #73859b;background:#17263a;color:white;border-radius:10px;padding:7px 11px;font-size:1.2rem}@media(max-width:1100px){.deckListGrid{grid-template-columns:repeat(5,minmax(0,1fr))}.labAnalysis{grid-template-columns:1fr 1fr}.labAnalysis .caution{grid-column:1/-1}}@media(max-width:820px){.labHero{grid-template-columns:1fr}.deckListGrid{grid-template-columns:repeat(4,minmax(0,1fr))}.labSummaryRight .verifyBadge{display:none}.deckCardModalBox{grid-template-columns:1fr}.deckCardModalBox img{max-height:58vh}}@media(max-width:600px){.deckLab>summary{padding:14px 12px}.labBody{padding:13px}.labSummaryLeft{gap:7px}.labSummaryLeft small{display:none}.labAnalysis{grid-template-columns:1fr}.labAnalysis .caution{grid-column:auto}.deckListGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.dlCard{padding:5px}.labTools{flex-direction:column;align-items:stretch}.labBtn{width:100%}.deckListHead{align-items:flex-start;flex-direction:column}.deckPngHead{align-items:flex-start;flex-direction:column}.previewSheet{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.deckPngModalContent{padding:12px}.deckPngModalGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+
+</style>
+</head>
+<body id="haut">
+
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="brand" href="#haut">
+      <span class="logo" aria-hidden="true"><img src="data:image/png;base64,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" alt=""></span>
+      <span>RKS · META INTELLIGENCE<small>DISNEY LORCANA · HYPERIA CITY</small></span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="#meta">Méta</a>
+      <a href="#decks">7 decks</a><a href="#decklab">Deck Lab</a>
+      <a href="#matchups">Matchups</a>
+      <a href="#cartes">Cartes clés</a>
+      <a href="#tests">Tests</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4">▶ Vidéo</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="heroGrid">
+      <div>
+        <div class="eyebrow">DAN ARNOLD LORCANA · HYPERIA CITY · WEEK 1</div>
+        <h1>Quels decks <span class="gradient">gagnent vraiment&nbsp;?</span></h1>
+        <p class="lead">Cette vidéo n'est pas une deck tech unique : c'est un premier rapport de métagame construit sur la semaine 1 du ladder. Sept archétypes sont étudiés séparément, avec leurs statistiques BO1 / BO3, leurs matchups et les nouvelles cartes qui changent réellement leur positionnement.</p>
+        <div class="heroActions">
+          <a class="btn gold" href="#meta">Voir le classement vidéo</a>
+          <a class="btn ghost" href="#decks">Explorer les 7 decks</a>
+          <button class="btn ghost" id="copySummary" type="button">⎘ Copier le résumé</button>
+        </div>
+        <div class="notice"><strong>Vigilance source :</strong> aucune liste de 60 cartes n'est reconstruite à partir d'une capture ou d'une supposition. Le rapport distingue les chiffres réellement cités par Dan Arnold des synthèses éditoriales rédigées pour faciliter la lecture. Une decklist externe n'est liée que lorsqu'elle a pu être identifiée clairement.</div>
+      </div>
+      <a class="heroMedia" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4" aria-label="Ouvrir la vidéo YouTube">
+        <img src="https://i.ytimg.com/vi/iKc1CkkTKK4/maxresdefault.jpg" alt="Vignette YouTube Hyperia City Week 1 — Dan Arnold Lorcana">
+        <span class="mediaTag">▶ Dan Arnold Lorcana · 22 min</span>
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>17 585</b><span>parties BO1 · 3 230 joueurs</span></div>
+      <div class="stat"><b>4 300</b><span>matchs BO3 · 10 700 parties</span></div>
+      <div class="stat"><b>7</b><span>archétypes détaillés dans la vidéo</span></div>
+      <div class="stat"><b>56,6 %</b><span>victoires en jouant en premier en BO1</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="meta">
+  <div class="wrap">
+    <div class="eyebrow">01 / LECTURE DU TERRAIN</div>
+    <h2>Le classement de Dan Arnold · semaine 1</h2>
+    <p class="desc">Les données ci-dessous reprennent le positionnement présenté dans la vidéo. La colonne « Verdict » reformule simplement la lecture donnée par Dan Arnold, sans transformer ce passage en classement RKS séparé. Les échantillons de Ruby / Amethyst restent volontairement signalés comme trop faibles pour établir une hiérarchie robuste.</p>
+
+    <div class="kpis">
+      <div class="panel"><div class="kpiBig" style="color:var(--green)">61,3 %</div><h3>Emerald / Steel</h3><p>Meilleur taux BO3 parmi les gros archétypes cités et très bons matchups contre Detectives et Princess Aggro.</p></div>
+      <div class="panel"><div class="kpiBig" style="color:var(--amber)">17 %</div><h3>Circle of Life</h3><p>Deck le plus joué dans les deux formats, tout en restant autour de 56–57 % de victoire.</p></div>
+      <div class="panel"><div class="kpiBig" style="color:var(--ruby)">44,9 %</div><h3>Mouse House en BO3</h3><p>Le signal négatif le plus net de la vidéo : un deck populaire mais mal positionné dans la méta go-wide.</p></div>
+    </div>
+
+    <div class="toolbar">
+      <input class="search" id="deckSearch" type="search" placeholder="Rechercher un deck, une encre, un verdict…">
+      <select class="select" id="verdictFilter" aria-label="Filtrer par verdict">
+        <option value="all">Tous les verdicts</option>
+        <option value="priority">Priorité</option>
+        <option value="solid">Solide</option>
+        <option value="watch">Watchlist</option>
+        <option value="avoid">À éviter</option>
+      </select>
+    </div>
+
+    <div class="tableWrap">
+      <table id="metaTable">
+        <thead><tr><th>Deck</th><th>BO1</th><th>BO3</th><th>Part de méta</th><th>Signal matchup</th><th>Verdict</th><th>Vidéo</th></tr></thead>
+        <tbody>
+          <tr data-tags="priority emerald steel evasive safe">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--green)"></span><span class="dot" style="background:var(--steel)"></span></span>Emerald / Steel Evasives</div></td>
+            <td class="win">57,9 %</td><td class="win">61,3 %</td><td>13 %</td>
+            <td>61 % vs Detectives · 62 % vs Princess</td><td><span class="tag good">PRIORITÉ #1</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=354s">05:54 ↗</a></td>
+          </tr>
+          <tr data-tags="priority amber sapphire detectives zootopia budget">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--amber)"></span><span class="dot" style="background:var(--sapphire)"></span></span>Zootopia Detectives</div></td>
+            <td class="win">57,3 %</td><td class="win">60,0 % <span class="muted">(saison)</span></td><td>—</td>
+            <td>64,6 % BO3 semaine · faible vs Princess / Emerald Steel</td><td><span class="tag good">PRIORITÉ</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=451s">07:31 ↗</a></td>
+          </tr>
+          <tr data-tags="priority amber emerald circle of life don karnage">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--amber)"></span><span class="dot" style="background:var(--green)"></span></span>Circle of Life</div></td>
+            <td class="win">56,2 %</td><td class="win">57,4 %</td><td>17 %</td>
+            <td>Aucun mauvais matchup dans le graphique cité</td><td><span class="tag good">PRIORITÉ</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=581s">09:41 ↗</a></td>
+          </tr>
+          <tr data-tags="solid amber emerald elinor princess aggro fast">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--amber)"></span><span class="dot" style="background:var(--green)"></span></span>Elinor Princess Aggro</div></td>
+            <td class="win">53,5 %</td><td class="win">57,9 %</td><td>—</td>
+            <td>Très bon dans le triangle · vulnérable à Ruby</td><td><span class="tag info">SOLIDE SI MAÎTRISÉ</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=712s">11:52 ↗</a></td>
+          </tr>
+          <tr data-tags="priority amethyst steel midrange pepita peter pan">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--amethyst)"></span><span class="dot" style="background:var(--steel)"></span></span>Amethyst / Steel Midrange</div></td>
+            <td class="win">55,4 %</td><td class="win">53,4 %</td><td>≈ 9 % BO3</td>
+            <td>60 % vs Princess · Detectives le bat 62 %</td><td><span class="tag good">À TESTER FORT</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=873s">14:33 ↗</a></td>
+          </tr>
+          <tr data-tags="avoid emerald sapphire mouse house overhyped">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--green)"></span><span class="dot" style="background:var(--sapphire)"></span></span>Mouse House</div></td>
+            <td class="win">51,0 %</td><td class="win">44,9 %</td><td>≈ 10 % BO1</td>
+            <td>Souffre contre la méta go-wide</td><td><span class="tag bad">À ÉVITER POUR L'INSTANT</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1002s">16:42 ↗</a></td>
+          </tr>
+          <tr data-tags="watch ruby amethyst wasabi sleeper small sample">
+            <td><div class="deckName"><span class="inks"><span class="dot" style="background:var(--ruby)"></span><span class="dot" style="background:var(--amethyst)"></span></span>Ruby / Amethyst</div></td>
+            <td class="win">61,1 %*</td><td class="win">53,4 %*</td><td>16 listes / 180 parties BO1</td>
+            <td>Wasabi + effets d'épuisement · encore en développement</td><td><span class="tag watch">WATCHLIST</span></td>
+            <td><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1155s">19:15 ↗</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="smallNote">* Ruby / Amethyst : seulement 180 parties BO1 réparties sur 16 listes et 73 matchs BO3. Dan Arnold précise lui-même que ce n'est pas suffisant pour le classer comme les autres archétypes.</p>
+  </div>
+</section>
+
+<section class="section" id="decks">
+  <div class="wrap">
+    <div class="eyebrow">02 / SEPT ARCHÉTYPES, SEPT LECTURES</div>
+    <h2>Ce que chaque deck apporte à Hyperia City</h2>
+    <p class="desc">La force de cette vidéo est de ne pas s'arrêter à un taux de victoire : Dan explique pourquoi les decks gagnent, ce qui peut faire évoluer leurs matchups et lesquels sont déjà assez stables pour un tournoi de début de format.</p>
+
+    <div class="deckGrid">
+      <article class="deckCard" style="--accent:var(--green);--score:var(--green)">
+        <div class="deckTop"><div><h3>1 · Emerald / Steel Evasives</h3><div class="sub">Le choix le plus sûr de la vidéo</div></div><div class="score">S</div></div>
+        <div class="deckMetrics"><span class="metric">57,9 % BO1</span><span class="metric">61,3 % BO3</span><span class="metric">13 % du field</span></div>
+        <p>Le deck conserve un noyau déjà éprouvé et n'a pas besoin d'une reconstruction massive pour Hyperia City. Flash est présenté comme un ajout simple et efficace. Elinor reste au cœur des meilleurs plans agressifs.</p>
+        <ul><li>Très bon contre Zootopia Detectives : 61 %.</li><li>Très bon contre Princess Aggro : 62 %.</li><li>Choix explicitement recommandé par Dan pour un tournoi construit Week 1.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=354s">▶ Passage 05:54</a></div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--sapphire);--score:var(--sapphire)">
+        <div class="deckTop"><div><h3>2 · Zootopia Detectives</h3><div class="sub">Le vrai nouvel archétype de Hyperia City</div></div><div class="score">A+</div></div>
+        <div class="deckMetrics"><span class="metric">57,3 % BO1</span><span class="metric">60,0 % BO3 saison</span><span class="metric">64,6 % semaine BO3</span></div>
+        <p>Le package Détective est assez profond pour fonctionner sans forcer Raging Storm. Le deck déploie beaucoup de personnages, exploite ses synergies et garde assez d'interaction pour gêner les plans plus lents.</p>
+        <ul><li>Budget estimé par le créateur autour de 50 $ une fois les prix stabilisés.</li><li>Raging Storm peut devenir une solution de miroir, mais les premières données ne la rendent pas obligatoire.</li><li>Matchups problématiques : Princess Aggro et Emerald / Steel.</li></ul>
+        <div class="deckActions">
+          <a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=451s">▶ Passage 07:31</a>
+          <a class="miniBtn" target="_blank" href="https://dreamborn.ink/decks/PdUtebfCGxef3WtboZK5">↗ Liste Week 1 vérifiée</a>
+        </div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--amber);--score:var(--amber)">
+        <div class="deckTop"><div><h3>3 · Circle of Life</h3><div class="sub">Le deck le plus joué reste performant</div></div><div class="score">A+</div></div>
+        <div class="deckMetrics"><span class="metric">56,2 % BO1</span><span class="metric">57,4 % BO3</span><span class="metric">17 % du field</span></div>
+        <p>Circle of Life continue d'être un deck très stable. Le changement important est Don Carnage : son Alter et les interactions avec les chansons de gestion donnent un nouveau moyen de reprendre le terrain sans dénaturer le plan de jeu.</p>
+        <ul><li>Aucun matchup franchement négatif dans le graphique commenté.</li><li>Don Carnage devient une menace structurante pour les boards adverses.</li><li>Très bon deck de référence pour tester les autres listes.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=581s">▶ Passage 09:41</a></div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--amber);--score:#d8c5ff">
+        <div class="deckTop"><div><h3>4 · Elinor Princess Aggro</h3><div class="sub">Presque inchangé… et c'est justement sa force</div></div><div class="score">A</div></div>
+        <div class="deckMetrics"><span class="metric">53,5 % BO1</span><span class="metric">57,9 % BO3</span><span class="metric">plan très stable</span></div>
+        <p>Le deck n'a pas besoin de réapprendre son métier : il pose, quête, maintient la pression et demande à l'adversaire de trouver la réponse. Dan insiste sur le fait que les joueurs déjà à l'aise avec la liste peuvent simplement continuer.</p>
+        <ul><li>Monte en performance en BO3.</li><li>Son plus gros danger reste l'installation de vrais decks Ruby dans la méta.</li><li>Matchup Emerald / Steel déjà difficile.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=712s">▶ Passage 11:52</a></div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--amethyst);--score:var(--amethyst)">
+        <div class="deckTop"><div><h3>5 · Amethyst / Steel Midrange</h3><div class="sub">Le package Pepita + Ombre de Peter Pan change les échanges</div></div><div class="score">A</div></div>
+        <div class="deckMetrics"><span class="metric">55,4 % BO1</span><span class="metric">53,4 % BO3</span><span class="metric">≈ 9 % du BO3</span></div>
+        <p>Ombre de Peter Pan épuise un personnage adverse, puis Pepita peut profiter de son Offensif +2 pour prendre un échange très favorable. Le plan fournit à Amethyst / Steel un outil de tempo plus direct sans devoir s'appuyer sur l'ancien ramp Ambre.</p>
+        <ul><li>Bat Princess Aggro environ 60 % du temps.</li><li>Detectives le bat environ 62 % du temps : c'est un vrai angle de préparation.</li><li>La vidéo estime que les 60 bonnes cartes ne sont probablement pas encore figées.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=873s">▶ Passage 14:33</a></div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--danger);--score:var(--danger)">
+        <div class="deckTop"><div><h3>6 · Mouse House</h3><div class="sub">Le deck « overhyped » de la semaine 1</div></div><div class="score">C</div></div>
+        <div class="deckMetrics"><span class="metric">51,0 % BO1</span><span class="metric">44,9 % BO3</span><span class="metric">≈ 10 % du BO1</span></div>
+        <p>Le problème n'est pas que les nouvelles cartes soient faibles individuellement. Le problème est le terrain : la méta actuelle joue large, enchaîne les menaces et force Mouse House à interagir plus qu'il ne sait le faire.</p>
+        <ul><li>Dan conseille explicitement de ne pas commencer Week 1 / Week 2 avec ce deck.</li><li>Les adversaires savent mieux jouer autour du plan en BO3.</li><li>Peut redevenir pertinent si la méta ralentit et se recentre sur le midrange.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1002s">▶ Passage 16:42</a></div>
+      </article>
+
+      <article class="deckCard" style="--accent:var(--ruby);--score:var(--ruby)">
+        <div class="deckTop"><div><h3>7 · Ruby / Amethyst</h3><div class="sub">Le sleeper à surveiller, pas encore un deck classé</div></div><div class="score">?</div></div>
+        <div class="deckMetrics"><span class="metric">61,1 % BO1*</span><span class="metric">53,4 % BO3*</span><span class="metric">180 parties / 73 matchs</span></div>
+        <p>Wasabi devient beaucoup plus intéressant dès que le deck peut épuiser les personnages adverses. Ombre de Peter Pan, Elsa et Isis créent ces fenêtres ; Dumbo peut aider à résoudre les cibles Insaisissables.</p>
+        <ul><li>Le chiffre BO1 est prometteur, mais l'échantillon est trop petit pour le comparer proprement aux leaders.</li><li>Dan le présente comme un point de départ pour les joueurs Ruby / Amethyst.</li><li>À mettre en watchlist plutôt qu'en Tier S prématuré.</li></ul>
+        <div class="deckActions"><a class="miniBtn" target="_blank" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1155s">▶ Passage 19:15</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="section deckLabSection" id="decklab">
+  <div class="wrap">
+    <div class="eyebrow">03 / DECK LAB COMPLET</div>
+    <h2>Les 7 listes exactes, analysées comme des deck-techs</h2>
+    <p class="desc">La couche méta reste intacte, mais chaque archétype réellement présenté reçoit maintenant le workflow RKS complet : liste Dreamborn exacte de Dan Arnold, 60 cartes vérifiées, noms et visuels officiels Ravensburger, analyse du plan de jeu, export Duels.ink, copie/téléchargement de la liste et génération du PNG du deck sans déformation.</p>
+    <div class="labRule"><strong>Contrôle anti-invention :</strong> les sept listes ci-dessous ont été retrouvées sur le profil Dreamborn de Dan Arnold sous leurs versions Week 1 correspondantes. Chaque total a été vérifié indépendamment à 60 cartes.</div>
+    <div class="deckLabStack">
+    <details class="deckLab" id="lab-emerald_steel" data-deck="emerald_steel" open>
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">01</span><span class="labInks"><span class="labDot" style="background:#48d39b" title="Émeraude"></span><span class="labDot" style="background:#b8cbd9" title="Acier"></span></span><span><strong>Émeraude / Acier Evasives</strong><small>Emerald Steel Evasive Week 1 Update</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">S</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Choix de sécurité Week 1</div><h3>Émeraude / Acier Evasives</h3><p>Déployer une courbe basse, mettre rapidement de la pression de lore et conserver l’initiative grâce au package Acier. La base était déjà éprouvée avant Hyperia City ; Flash et Toulouse sont surtout des améliorations ciblées plutôt qu’une refonte complète.</p><div class="labStats"><span class="labStat">57,9 % BO1</span><span class="labStat">61,3 % BO3</span><span class="labStat">13 % du field</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 19 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/WQT2tIeDj3a7nx4Rm5ag">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Flash ralentit les plans qui comptent sur Charge tout en avançant lui-même au lore.</li><li>Elinor reste une pièce majeure des sorties qui forcent l’adversaire à répondre vite.</li><li>Strength of a Raging Fire convertit le board large en interaction sans casser le plan de pression.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>Le signal le plus fort de la vidéo : environ 61 % contre Detectives et 62 % contre Princess Aggro. Dan le présente comme le choix qu’il jouerait pour un tournoi construit Week 1.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=354s">▶ Vidéo 05:54</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>La vidéo ne fournit pas une matrice complète de tous les matchups ; ne pas extrapoler ces deux bons résultats à l’ensemble du field.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="emerald_steel">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=NCBUb2QgLSBBbGwgQWxvbmUgKDExLTg3KQoyIEJvYmJ5IFppbXVydXNraSAtIFNwcmF5IENoZWVzZSBLaWQgKDktNzgpCjQgUGVnYXN1cyAtIEdpZnQgZm9yIEhlcmN1bGVzICg5LTg0KQo0IERhcmt3aW5nIER1Y2sgLSBDcmltZSBGaWdodGVyICgxMS0xNzQpCjQgV2hpdGUgUmFiYml0IC0gTGF0ZSBBZ2FpbiAoMTEtODkpCjQgVXJzdWxhIC0gRGVjZWl2ZXIgKDktOTApCjIgRmxhc2ggLSBFZmZpY2llbnQgQ2xlcmsgKDE0LTE3MSkKMyBUb3Vsb3VzZSAtIFJvdWdoIGFuZCBUdW1ibGUgKDE0LTE4MikKMyBMYXVuY2hwYWQgLSBUcnVzdHkgU2lkZWtpY2sgKDExLTE3NykKNCBNdXNodSAtIFN0ZWFsdGh5IERyYWdvbiAoMTMtOTcpCjQgVml4ZXkgLSBGb3Jlc3QgRnJpZW5kICgxMS04NikKMyBNYXggR29vZiAtIFJlYmVsbGlvdXMgVGVlbiAoOS03NSkKMiBXb29sdGVyICYgSmVzc2UgLSBCZWxsd2V0aGVyJ3MgSGVuY2htZW4gKDE0LTE3OCkKMyBBbmdlbGEgLSBOaWdodCBXYXJyaW9yICgxMS0xODcpCjIgR2FldGFuIE1vbGllcmUgLSBDbGV2ZXIgQnVycm93ZXIgKDEyLTgwKQo0IEVsaW5vciAtIFJlbm93bmVkIERpcGxvbWF0ICgxMi04NikKMSBUaGUgUXVlZW4gLSBEZXZpb3VzIERpc2d1aXNlICgxMi05MCkKMyBCcm9hZHdheSAtIFN0dXJkeSBhbmQgU3Ryb25nICgxMC0xOTApCjQgU3RyZW5ndGggb2YgYSBSYWdpbmcgRmlyZSAoOS0yMDEp">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="emerald_steel">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/WQT2tIeDj3a7nx4Rm5ag">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">19 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="emerald_steel">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="emerald_steel" href="#" download="RKS_emerald_steel_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="emerald_steel" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="emerald_steel">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="emerald_steel" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Émeraude / Acier Evasives" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 19 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="emerald_steel">19 / 19 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="emerald_steel"><select data-deck-ink="emerald_steel"><option value="all">Toutes les encres</option><option value="EMERALD">Émeraude</option><option value="STEEL">Acier</option></select><button class="labBtn ghost" type="button" data-lang-toggle="emerald_steel">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="emerald_steel"><article class="dlCard" data-cardkey="emerald_steel:0" data-ink="EMERALD" data-search="rox — tout seul tod — all alone 87/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/87_de340de4cf1529760115c5916ba6ca949d7c8071.jpg" alt="Rox — Tout seul" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Rox — Tout seul</strong><strong class="enLabel" hidden>Tod — All Alone</strong><small>Émeraude · Personnage · 87/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:1" data-ink="EMERALD" data-search="bobby zimmeruski — fan de fromage en spray bobby zimuruski — spray cheese kid 78/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/78_6416b33e8ff3fd9c94e4236565f6af900cc98866.jpg" alt="Bobby Zimmeruski — Fan de fromage en spray" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Bobby Zimmeruski — Fan de fromage en spray</strong><strong class="enLabel" hidden>Bobby Zimuruski — Spray Cheese Kid</strong><small>Émeraude · Personnage · 78/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:2" data-ink="EMERALD" data-search="pégase — présent pour hercule pegasus — gift for hercules 84/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/84_e88dc47decf624766c6df4446bb500a7ee745b18.jpg" alt="Pégase — Présent pour Hercule" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Pégase — Présent pour Hercule</strong><strong class="enLabel" hidden>Pegasus — Gift for Hercules</strong><small>Émeraude · Personnage · 84/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:3" data-ink="STEEL" data-search="myster mask — combat le crime darkwing duck — crime fighter 174/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/174_64192a0760f23e40912ef679d9ee56f7b3768e28.jpg" alt="Myster Mask — Combat le crime" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Myster Mask — Combat le crime</strong><strong class="enLabel" hidden>Darkwing Duck — Crime Fighter</strong><small>Acier · Personnage · 174/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:4" data-ink="EMERALD" data-search="le lapin blanc — encore en retard white rabbit — late again 89/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/89_da7eaa33a378bfb76904196019313ae5b91b7588.jpg" alt="Le lapin blanc — Encore en retard" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Le lapin blanc — Encore en retard</strong><strong class="enLabel" hidden>White Rabbit — Late Again</strong><small>Émeraude · Personnage · 89/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:5" data-ink="EMERALD" data-search="ursula — embobineuse ursula — deceiver 90/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/90_4ce046a53d46e99639b8b444472a999a5ab6173b.jpg" alt="Ursula — Embobineuse" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Ursula — Embobineuse</strong><strong class="enLabel" hidden>Ursula — Deceiver</strong><small>Émeraude · Personnage · 90/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:6" data-ink="STEEL" data-search="flash — employé efficace flash — efficient clerk 171/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/171_d70e328c491e5d2da892a116f81e26c38e2967af.jpg" alt="Flash — Employé efficace" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Flash — Employé efficace</strong><strong class="enLabel" hidden>Flash — Efficient Clerk</strong><small>Acier · Personnage · 171/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:7" data-ink="STEEL" data-search="toulouse — chahuteur et turbulent toulouse — rough and tumble 182/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/182_8cb23d85ffeb453b95a2a51229e09234a71bee45.jpg" alt="Toulouse — Chahuteur et turbulent" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Toulouse — Chahuteur et turbulent</strong><strong class="enLabel" hidden>Toulouse — Rough and Tumble</strong><small>Acier · Personnage · 182/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:8" data-ink="STEEL" data-search="flagada jones — assistant de confiance launchpad — trusty sidekick 177/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/177_debb55c128ab8d7da34738f4445dd5fc620d266a.jpg" alt="Flagada Jones — Assistant de confiance" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Flagada Jones — Assistant de confiance</strong><strong class="enLabel" hidden>Launchpad — Trusty Sidekick</strong><small>Acier · Personnage · 177/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:9" data-ink="EMERALD" data-search="mushu — dragon furtif mushu — stealthy dragon 97/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/97_b57696b6e93f4249047595ee6648298f65ba9ad0.jpg" alt="Mushu — Dragon furtif" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Mushu — Dragon furtif</strong><strong class="enLabel" hidden>Mushu — Stealthy Dragon</strong><small>Émeraude · Personnage · 97/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:10" data-ink="EMERALD" data-search="vixy — amie de la forêt vixey — forest friend 86/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/86_66f36fef14e7d5708f1c8073d24e5a741b9d8e5e.jpg" alt="Vixy — Amie de la forêt" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Vixy — Amie de la forêt</strong><strong class="enLabel" hidden>Vixey — Forest Friend</strong><small>Émeraude · Personnage · 86/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:11" data-ink="EMERALD" data-search="max dingo — ado rebelle max goof — rebellious teen 75/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/75_816e64611beeade2dc08cffe54f4a55178748fcb.jpg" alt="Max Dingo — Ado rebelle" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Max Dingo — Ado rebelle</strong><strong class="enLabel" hidden>Max Goof — Rebellious Teen</strong><small>Émeraude · Personnage · 75/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:12" data-ink="STEEL" data-search="woolter le bélier &amp; jessie le bélier — hommes de main de bellwether woolter &amp; jesse — bellwether&#x27;s henchmen 178/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/178_18280c70963770691b742c832a3e7273e1b80d80.jpg" alt="Woolter le bélier &amp; Jessie le bélier — Hommes de main de Bellwether" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Woolter le bélier &amp; Jessie le bélier — Hommes de main de Bellwether</strong><strong class="enLabel" hidden>Woolter &amp; Jesse — Bellwether&#x27;s Henchmen</strong><small>Acier · Personnage · 178/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:13" data-ink="STEEL" data-search="angela — guerrière de la nuit angela — night warrior 187/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/187_55ffc86ad1a1b8580f3ced1742beb57dd5817b3e.jpg" alt="Angela — Guerrière de la nuit" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Angela — Guerrière de la nuit</strong><strong class="enLabel" hidden>Angela — Night Warrior</strong><small>Acier · Personnage · 187/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:14" data-ink="EMERALD" data-search="gaëtan molière — fouisseur brillant gaetan moliere — clever burrower 80/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/80_bc3fd8d4de05218eb0155f0f75723e3210234de0.jpg" alt="Gaëtan Molière — Fouisseur brillant" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Gaëtan Molière — Fouisseur brillant</strong><strong class="enLabel" hidden>Gaetan Moliere — Clever Burrower</strong><small>Émeraude · Personnage · 80/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:15" data-ink="EMERALD" data-search="elinor — diplomate renommée elinor — renowned diplomat 86/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/86_186deb58ae08664a0c584df6d6fecc9f8b2c7b42.jpg" alt="Elinor — Diplomate renommée" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Elinor — Diplomate renommée</strong><strong class="enLabel" hidden>Elinor — Renowned Diplomat</strong><small>Émeraude · Personnage · 86/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:16" data-ink="EMERALD" data-search="la reine — déguisement sournois the queen — devious disguise 90/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/90_a2c9ed10f31668b150c3304e93ec425bc01b1d99.jpg" alt="La Reine — Déguisement sournois" loading="lazy"><span class="dlQty">×1</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">La Reine — Déguisement sournois</strong><strong class="enLabel" hidden>The Queen — Devious Disguise</strong><small>Émeraude · Personnage · 90/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:17" data-ink="STEEL" data-search="broadway — fort et robuste broadway — sturdy and strong 190/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/190_4d8f8e8aee3f5fb6230c083655338f05c793e897.jpg" alt="Broadway — Fort et robuste" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Broadway — Fort et robuste</strong><strong class="enLabel" hidden>Broadway — Sturdy and Strong</strong><small>Acier · Personnage · 190/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="emerald_steel:18" data-ink="STEEL" data-search="plus ardent que le feu des volcans strength of a raging fire 201/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/201_f12a0182f591c61fc1d5669be0d6163309fbb68c.jpg" alt="Plus ardent que le feu des volcans" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Plus ardent que le feu des volcans</strong><strong class="enLabel" hidden>Strength of a Raging Fire</strong><small>Acier · Action · 201/204 FR 9</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-detectives" data-deck="detectives">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">02</span><span class="labInks"><span class="labDot" style="background:#f0bd55" title="Ambre"></span><span class="labDot" style="background:#5ab2ff" title="Saphir"></span></span><span><strong>Zootopia Detectives</strong><small>Zootopia Detectives Week 1 Update</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">A+</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Nouvel archétype majeur</div><h3>Zootopia Detectives</h3><p>Jouer large avec une masse critique de Détectives et faire travailler la synergie de tribu plutôt que la puissance individuelle. La liste crée du card advantage, de la pression et de l’interaction tout en restant très linéaire à piloter.</p><div class="labStats"><span class="labStat">57,3 % BO1</span><span class="labStat">60,0 % BO3 saison</span><span class="labStat">64,6 % BO3 semaine</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 18 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/PdUtebfCGxef3WtboZK5">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Les différentes Judy Hopps construisent la densité Détective et les lignes de valeur.</li><li>Nick Wilde apporte du soutien et de la pioche dans les tours où plusieurs personnages sont développés.</li><li>Raging Storm est discutée comme solution potentielle de miroir, mais les premières données n’en font pas une obligation.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>Très performant globalement, mais deux alertes sont explicites : Princess Aggro et Emerald / Steel. Il joue en revanche correctement dans les plans plus lents / Circle selon les premières données.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=451s">▶ Vidéo 07:31</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>Dan estime le deck autour de 50 $ une fois les prix stabilisés ; c’est une estimation de la vidéo, pas un prix garanti.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="detectives">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=NCBKdWR5IEhvcHBzIC0gSGVscGZ1bCBPZmZpY2VyICgxNC05KQo0IEhpZ2dpbnMgLSBVbmRlcmNvdmVyIE9mZmljZXIgKDEwLTUpCjIgRWlsb253eSAtIFByaW5jZXNzIG9mIExseXIgKDEwLTcpCjQgTmljayBXaWxkZSAtIFByb3ZpZGluZyBCYWNrdXAgKDE0LTI1KQo0IEp1ZHkgSG9wcHMgLSBEYXkgQ2FtcCBJbnN0cnVjdG9yICgxNC0xNTQpCjMgRGFya3dpbmcgRHVjayAtIERyYWtlIE1hbGxhcmQgKDExLTE0NSkKMiBEYWlzeSBEdWNrIC0gR2hvc3QgRmluZGVyICgxMC0xNDEpCjQgSnVkeSBIb3BwcyAtIE9uIHRoZSBDYXNlICgxMC0xMzcpCjQgTmljayBXaWxkZSAtIFRveSBEcml2ZSBPZmZpY2VyICgxNC0xNCkKNCBFbGlzYSBNYXphIC0gSGFyZHdvcmtpbmcgRGV0ZWN0aXZlICgxNC0xNikKNCBKdWR5IEhvcHBzIC0gQWx3YXlzIFZpZ2lsYW50ICgxNC0yNCkKNCBKdWR5IEhvcHBzIC0gVW5jb3ZlcmluZyBDbHVlcyAoMTAtMTU2KQo0IEdhc3RvbiAtIFN1cGVyaW9yIEFyY2hlciAoMTMtMTUpCjQgRmFuZ21leWVyIC0gSWN5IE9mZmljZXIgKDExLTEwKQoyIE5pY2sgV2lsZGUgLSBJbnF1aXNpdGl2ZSBIYXJib3JtYXN0ZXIgKDE0LTExKQo0IEp1ZHkgSG9wcHMgLSBMZWFkIERldGVjdGl2ZSAoMTAtMTUwKQoyIERhaXN5IER1Y2sgLSBQYXJhbm9ybWFsIEludmVzdGlnYXRvciAoMTAtMTU0KQoxIExldCBJdCBHbyAoMS0xNjMp">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="detectives">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/PdUtebfCGxef3WtboZK5">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">18 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="detectives">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="detectives" href="#" download="RKS_detectives_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="detectives" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="detectives">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="detectives" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Zootopia Detectives" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 18 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="detectives">18 / 18 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="detectives"><select data-deck-ink="detectives"><option value="all">Toutes les encres</option><option value="AMBER">Ambre</option><option value="SAPPHIRE">Saphir</option></select><button class="labBtn ghost" type="button" data-lang-toggle="detectives">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="detectives"><article class="dlCard" data-cardkey="detectives:0" data-ink="AMBER" data-search="judy hopps — policière serviable judy hopps — helpful officer 9/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/9_c622de3674c5f6dce7dbc19915459497ef044bcd.jpg" alt="Judy Hopps — Policière serviable" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Policière serviable</strong><strong class="enLabel" hidden>Judy Hopps — Helpful Officer</strong><small>Ambre · Personnage · 9/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:1" data-ink="AMBER" data-search="higgins — policier sous couverture higgins — undercover officer 5/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/5_4204d0c3a4b6e2aca51310ce37e57c6fd8893270.jpg" alt="Higgins — Policier sous couverture" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Higgins — Policier sous couverture</strong><strong class="enLabel" hidden>Higgins — Undercover Officer</strong><small>Ambre · Personnage · 5/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:2" data-ink="AMBER" data-search="eilonwy — princesse de llyr eilonwy — princess of llyr 7/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/7_2a802c894286ca52129c9b000b4100eb4698bfcc.jpg" alt="Eilonwy — Princesse de Llyr" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Eilonwy — Princesse de Llyr</strong><strong class="enLabel" hidden>Eilonwy — Princess of Llyr</strong><small>Ambre · Personnage · 7/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:3" data-ink="AMBER" data-search="nick wilde — apporte du renfort nick wilde — providing backup 25/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/25_1e3f6f76cc5ecb820b8ec4f34c33a867fe771d00.jpg" alt="Nick Wilde — Apporte du renfort" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Nick Wilde — Apporte du renfort</strong><strong class="enLabel" hidden>Nick Wilde — Providing Backup</strong><small>Ambre · Personnage · 25/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:4" data-ink="SAPPHIRE" data-search="judy hopps — instructrice en centre de loisirs judy hopps — day camp instructor 154/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/154_d5a7116d78b2fe60f567b9cad4865c301178ce34.jpg" alt="Judy Hopps — Instructrice en centre de loisirs" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Instructrice en centre de loisirs</strong><strong class="enLabel" hidden>Judy Hopps — Day Camp Instructor</strong><small>Saphir · Personnage · 154/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:5" data-ink="SAPPHIRE" data-search="myster mask — albert colvert darkwing duck — drake mallard 145/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/145_5e548068e724f178651527e416101ee15ad64e5e.jpg" alt="Myster Mask — Albert Colvert" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Myster Mask — Albert Colvert</strong><strong class="enLabel" hidden>Darkwing Duck — Drake Mallard</strong><small>Saphir · Personnage · 145/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:6" data-ink="SAPPHIRE" data-search="daisy — traqueuse de fantômes daisy duck — ghost finder 141/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/141_5afbe7285fd249584169a6cf70393253499e27ef.jpg" alt="Daisy — Traqueuse de fantômes" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Daisy — Traqueuse de fantômes</strong><strong class="enLabel" hidden>Daisy Duck — Ghost Finder</strong><small>Saphir · Personnage · 141/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:7" data-ink="SAPPHIRE" data-search="judy hopps — sur l&#x27;affaire judy hopps — on the case 137/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/137_5dcef65fcc40f025ab8ee050448633082e0c0efe.jpg" alt="Judy Hopps — Sur l&#x27;affaire" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Sur l&#x27;affaire</strong><strong class="enLabel" hidden>Judy Hopps — On the Case</strong><small>Saphir · Personnage · 137/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:8" data-ink="AMBER" data-search="nick wilde — chargé de la collecte de jouets nick wilde — toy drive officer 14/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/14_15d65090c8bc9fd4ad103e7d72ff5196b2b3ea2b.jpg" alt="Nick Wilde — Chargé de la collecte de jouets" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Nick Wilde — Chargé de la collecte de jouets</strong><strong class="enLabel" hidden>Nick Wilde — Toy Drive Officer</strong><small>Ambre · Personnage · 14/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:9" data-ink="AMBER" data-search="elisa maza — détective acharnée elisa maza — hardworking detective 16/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/16_aaafbca6c0d1b2a568d92194676efc5061fb19e8.jpg" alt="Elisa Maza — Détective acharnée" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Elisa Maza — Détective acharnée</strong><strong class="enLabel" hidden>Elisa Maza — Hardworking Detective</strong><small>Ambre · Personnage · 16/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:10" data-ink="AMBER" data-search="judy hopps — toujours vigilante judy hopps — always vigilant 24/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/24_85ba643352de081050dd032e5d680f8832477a91.jpg" alt="Judy Hopps — Toujours vigilante" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Toujours vigilante</strong><strong class="enLabel" hidden>Judy Hopps — Always Vigilant</strong><small>Ambre · Personnage · 24/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:11" data-ink="SAPPHIRE" data-search="judy hopps — découvrant des indices judy hopps — uncovering clues 156/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/156_9087ca5ceb3157f934c88d431778c0e43671156a.jpg" alt="Judy Hopps — Découvrant des indices" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Découvrant des indices</strong><strong class="enLabel" hidden>Judy Hopps — Uncovering Clues</strong><small>Saphir · Personnage · 156/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:12" data-ink="AMBER" data-search="gaston — archer supérieur gaston — superior archer 15/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/15_349f7c7e4c99a61f77b79b62698588efc60f15e3.jpg" alt="Gaston — Archer supérieur" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Gaston — Archer supérieur</strong><strong class="enLabel" hidden>Gaston — Superior Archer</strong><small>Ambre · Personnage · 15/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:13" data-ink="AMBER" data-search="cromeyer — policier froid fangmeyer — icy officer 10/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/10_265cb2ea5b0f2a3a0fdce37d5b5f2162c9009a82.jpg" alt="Cromeyer — Policier froid" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Cromeyer — Policier froid</strong><strong class="enLabel" hidden>Fangmeyer — Icy Officer</strong><small>Ambre · Personnage · 10/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:14" data-ink="AMBER" data-search="nick wilde — garde-côte inquisitif nick wilde — inquisitive harbormaster 11/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/11_a6ec539d9166732cfe0e38a1041b7f750c084702.jpg" alt="Nick Wilde — Garde-côte inquisitif" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Nick Wilde — Garde-côte inquisitif</strong><strong class="enLabel" hidden>Nick Wilde — Inquisitive Harbormaster</strong><small>Ambre · Personnage · 11/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:15" data-ink="SAPPHIRE" data-search="judy hopps — détective en charge judy hopps — lead detective 150/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/150_f32f2b88dc30093b909b52064b141629224e2235.jpg" alt="Judy Hopps — Détective en charge" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Judy Hopps — Détective en charge</strong><strong class="enLabel" hidden>Judy Hopps — Lead Detective</strong><small>Saphir · Personnage · 150/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:16" data-ink="SAPPHIRE" data-search="daisy — investigatrice du paranormal daisy duck — paranormal investigator 154/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/154_abaa24e496d81f1e17fe4d99958b6ce6bcff73fb.jpg" alt="Daisy — Investigatrice du paranormal" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Daisy — Investigatrice du paranormal</strong><strong class="enLabel" hidden>Daisy Duck — Paranormal Investigator</strong><small>Saphir · Personnage · 154/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="detectives:17" data-ink="SAPPHIRE" data-search="libérée, délivrée let it go 163/204 fr 1">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set1/163_77f5863625fc3e0f5b6f4d1daef0c872e1a3afae.jpg" alt="LIBÉRÉE, DÉLIVRÉE" loading="lazy"><span class="dlQty">×1</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">LIBÉRÉE, DÉLIVRÉE</strong><strong class="enLabel" hidden>Let It Go</strong><small>Saphir · Action · 163/204 FR 1</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-circle" data-deck="circle">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">03</span><span class="labInks"><span class="labDot" style="background:#f0bd55" title="Ambre"></span><span class="labDot" style="background:#48d39b" title="Émeraude"></span></span><span><strong>Circle of Life</strong><small>Circle of Life Week 1 Update</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">A+</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Benchmark le plus stable</div><h3>Circle of Life</h3><p>Installer ses chanteurs et ses pièces de setup, filtrer les chansons puis utiliser les grosses séquences de chansons / Prince Phillip pour reprendre le terrain et finir. Hyperia City renforce surtout le plan existant au lieu de le remplacer.</p><div class="labStats"><span class="labStat">56,2 % BO1</span><span class="labStat">57,4 % BO3</span><span class="labStat">17 % du field</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 17 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/rZCis6POZD87lFpFA8kQ">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Don Carnage – Debonair Pirate ajoute une nouvelle ligne d’Alter et un effet de board immédiat.</li><li>Malicious, Mean, and Scary prépare les personnages adverses endommagés pour To Wither a Flower.</li><li>Max Goof – Karaoke Star transforme des chansons moins utiles en nouvelles cartes et devient une menace de lore tardive.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>C’est le deck le plus joué des deux formats dans l’échantillon de la vidéo et le seul du graphique commenté sans mauvais matchup net. Il sert donc de très bon deck de référence pour tester les autres listes.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=581s">▶ Vidéo 09:41</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>« Pas de mauvais matchup dans le graphique » ne signifie pas « aucun mauvais matchup possible » : le seuil de données de la vidéo reste celui du début de format.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="circle">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=MyBEb24gS2FybmFnZSAtIEtoYW4ncyBDb3VyaWVyICgxNC03MCkKNCBBbmdlbCAtIFNpcmVuIFNpbmdlciAoMTEtMjUpCjQgVXJzdWxhIC0gVmFuZXNzYSAoOS0yMikKNCBNZWlsaW4gTGVlIC0gTG9zaW5nIENvbnRyb2wgKDEzLTE2KQo0IE1heCBHb29mIC0gS2FyYW9rZSBTdGFyICgxNC04OSkKNCBUb2QgLSBDbGV2ZXIgRm94ICgxMy04MSkKMiBDaGVybmFib2cgLSBVbm5hdHVyYWwgRm9yY2UgKDExLTc3KQozIERvbiBLYXJuYWdlIC0gRGVib25haXIgUGlyYXRlICgxNC04OCkKMyBNYXggR29vZiAtIENoYXJ0IFRvcHBlciAoOS03NykKMiBTdGl0Y2ggLSBDYXJlZnJlZSBTdXJmZXIgKDktMjQpCjQgTWlsbyBUaGF0Y2ggLSBHZXR0aW5nIEhpcyBIYW5kcyBEaXJ0eSAoMTItODIpCjQgUHJpbmNlIFBoaWxsaXAgLSBWYW5xdWlzaGVyIG9mIEZvZXMgKDktNzMpCjQgU3RyaWtlIEEgR29vZCBNYXRjaCAoMTEtOTQpCjQgQWtvb2QgZXQgRW11dGkgKDExLTI5KQo0IE1hbGljaW91cywgTWVhbiwgYW5kIFNjYXJ5ICgxMC05NykKMyBUbyBXaXRoZXIgYSBGbG93ZXIgKDEzLTEwMSkKNCBDaXJjbGUgb2YgTGlmZSAoOS0yNik%3D">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="circle">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/rZCis6POZD87lFpFA8kQ">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">17 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="circle">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="circle" href="#" download="RKS_circle_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="circle" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="circle">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="circle" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Circle of Life" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 17 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="circle">17 / 17 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="circle"><select data-deck-ink="circle"><option value="all">Toutes les encres</option><option value="AMBER">Ambre</option><option value="EMERALD">Émeraude</option></select><button class="labBtn ghost" type="button" data-lang-toggle="circle">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="circle"><article class="dlCard" data-cardkey="circle:0" data-ink="EMERALD" data-search="don carnage — coursier de khan don karnage — khan&#x27;s courier 70/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/70_df18edcf58f6cf304a1fa7e6bcc2d50ad9fe7a3e.jpg" alt="Don Carnage — Coursier de Khan" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Don Carnage — Coursier de Khan</strong><strong class="enLabel" hidden>Don Karnage — Khan&#x27;s Courier</strong><small>Émeraude · Personnage · 70/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="circle:1" data-ink="AMBER" data-search="angel — chanteuse sirène angel — siren singer 25/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/25_d40dcab5ae92311ae20e0f2cf3b96558976a7334.jpg" alt="Angel — Chanteuse sirène" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Angel — Chanteuse sirène</strong><strong class="enLabel" hidden>Angel — Siren Singer</strong><small>Ambre · Personnage · 25/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="circle:2" data-ink="AMBER" data-search="ursula — vanessa ursula — vanessa 22/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/22_fe71e3cd4fb93f1557cce317d90ac90d0ded872d.jpg" alt="Ursula — Vanessa" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Ursula — Vanessa</strong><strong class="enLabel" hidden>Ursula — Vanessa</strong><small>Ambre · Personnage · 22/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="circle:3" data-ink="AMBER" data-search="meilin lee — perd le contrôle meilin lee — losing control 16/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/16_5429179e86efed502becfbbbf5269a1b7677e4d7.jpg" alt="Meilin Lee — Perd le contrôle" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Meilin Lee — Perd le contrôle</strong><strong class="enLabel" hidden>Meilin Lee — Losing Control</strong><small>Ambre · Personnage · 16/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="circle:4" data-ink="EMERALD" data-search="max dingo — star du karaoké max goof — karaoke star 89/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/89_f6a7ce0329b89e3a9f09ff07dac761cd8acc6362.jpg" alt="Max Dingo — Star du karaoké" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Max Dingo — Star du karaoké</strong><strong class="enLabel" hidden>Max Goof — Karaoke Star</strong><small>Émeraude · Personnage · 89/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="circle:5" data-ink="EMERALD" data-search="rox — renard rusé tod — clever fox 81/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/81_8cd6950136e9574a1616012f719379e4a2acd30d.jpg" alt="Rox — Renard rusé" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Rox — Renard rusé</strong><strong class="enLabel" hidden>Tod — Clever Fox</strong><small>Émeraude · Personnage · 81/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="circle:6" data-ink="EMERALD" data-search="chernabog — force contre nature chernabog — unnatural force 77/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/77_586baa8ac0c5169bebdfeb73666be7e896745e13.jpg" alt="Chernabog — Force contre nature" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Chernabog — Force contre nature</strong><strong class="enLabel" hidden>Chernabog — Unnatural Force</strong><small>Émeraude · Personnage · 77/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="circle:7" data-ink="EMERALD" data-search="don carnage — pirate sophistiqué don karnage — debonair pirate 88/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/88_47747b066d7e3395e345ed0657741fd284766e92.jpg" alt="Don Carnage — Pirate sophistiqué" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Don Carnage — Pirate sophistiqué</strong><strong class="enLabel" hidden>Don Karnage — Debonair Pirate</strong><small>Émeraude · Personnage · 88/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="circle:8" data-ink="EMERALD" data-search="max dingo — en tête du hit-parade max goof — chart topper 77/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/77_180333afb525b2c4e617c04cce367c8c9cc42fb0.jpg" alt="Max Dingo — En tête du hit-parade" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Max Dingo — En tête du hit-parade</strong><strong class="enLabel" hidden>Max Goof — Chart Topper</strong><small>Émeraude · Personnage · 77/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="circle:9" data-ink="AMBER" data-search="stitch — surfeur insouciant stitch — carefree surfer 24/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/24_d8c395c67be50f73d79b87f14dfa4c162274de37.jpg" alt="Stitch — Surfeur insouciant" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Stitch — Surfeur insouciant</strong><strong class="enLabel" hidden>Stitch — Carefree Surfer</strong><small>Ambre · Personnage · 24/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="circle:10" data-ink="EMERALD" data-search="milo thatch — se salit les mains milo thatch — getting his hands dirty 82/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/82_20509ba12fda0c883f613b834a34b02f2dae977f.jpg" alt="Milo Thatch — Se salit les mains" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Milo Thatch — Se salit les mains</strong><strong class="enLabel" hidden>Milo Thatch — Getting His Hands Dirty</strong><small>Émeraude · Personnage · 82/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="circle:11" data-ink="EMERALD" data-search="prince philippe — pourfendeur d&#x27;ennemis prince phillip — vanquisher of foes 73/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/73_dbe9e096f358ab66edb197447c2151c461dd0d04.jpg" alt="Prince Philippe — Pourfendeur d&#x27;ennemis" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">9</span></div>
+      <div class="dlText"><strong class="frLabel">Prince Philippe — Pourfendeur d&#x27;ennemis</strong><strong class="enLabel" hidden>Prince Phillip — Vanquisher of Foes</strong><small>Émeraude · Personnage · 73/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="circle:12" data-ink="EMERALD" data-search="crois-moi j&#x27;ai vu pire strike a good match 94/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/94_08d8105d160a622c0a3176c70c28cb940b97f16a.jpg" alt="Crois-moi j&#x27;ai vu pire" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Crois-moi j&#x27;ai vu pire</strong><strong class="enLabel" hidden>Strike A Good Match</strong><small>Émeraude · Action · 94/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="circle:13" data-ink="AMBER" data-search="akood et emuti akood et emuti 29/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/29_088cd1c67b60b2c76b1ff5f7b68aee28ddb67c50.jpg" alt="Akood et Emuti" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Akood et Emuti</strong><strong class="enLabel" hidden>Akood et Emuti</strong><small>Ambre · Action · 29/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="circle:14" data-ink="EMERALD" data-search="malin, méchant, vilain malicious, mean, and scary 97/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/97_de699f88c2231aa2058d1581cc31462e5846d006.jpg" alt="Malin, méchant, vilain" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Malin, méchant, vilain</strong><strong class="enLabel" hidden>Malicious, Mean, and Scary</strong><small>Émeraude · Action · 97/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="circle:15" data-ink="EMERALD" data-search="je dessèche une fleur to wither a flower 101/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/101_19818508a04140cd0e41e4e66c0914a80a96d1d6.jpg" alt="Je dessèche une fleur" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Je dessèche une fleur</strong><strong class="enLabel" hidden>To Wither a Flower</strong><small>Émeraude · Action · 101/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="circle:16" data-ink="AMBER" data-search="l&#x27;histoire de la vie circle of life 26/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/26_598bca6877cc1092b4b7cf02895fcda0dac4a129.jpg" alt="L&#x27;histoire de la vie" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">8</span></div>
+      <div class="dlText"><strong class="frLabel">L&#x27;histoire de la vie</strong><strong class="enLabel" hidden>Circle of Life</strong><small>Ambre · Action · 26/204 FR 9</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-elinor" data-deck="elinor">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">04</span><span class="labInks"><span class="labDot" style="background:#f0bd55" title="Ambre"></span><span class="labDot" style="background:#48d39b" title="Émeraude"></span></span><span><strong>Elinor Princess Aggro</strong><small>Elinor Aggro Week 1 update</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">A</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Solide si déjà maîtrisé</div><h3>Elinor Princess Aggro</h3><p>Développer très vite plusieurs petits personnages, convertir immédiatement le board en lore et obliger l’adversaire à répondre à la course. La force du deck est justement de demander très peu de réapprentissage après le changement de set.</p><div class="labStats"><span class="labStat">53,5 % BO1</span><span class="labStat">57,9 % BO3</span><span class="labStat">plan quasi inchangé</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 17 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/7TdJo13X54MqQiJ7dGa0">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Elinor maintient la pression et reste la carte structurante citée par Dan.</li><li>Mickey Mouse – Best in Town ajoute une nouvelle pièce agressive Hyperia City.</li><li>La densité de personnages à 1 et 2 encres rend la stratégie très rapide et régulière.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>Le deck reste dans le triangle de la méta Week 1. Emerald / Steel est déjà compliqué et Dan insiste surtout sur Ruby : si les decks Rubis deviennent réellement présents, Princess Aggro peut perdre beaucoup de valeur.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=712s">▶ Vidéo 11:52</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>C’est un choix de continuité pour un joueur qui connaît déjà la stratégie, pas la preuve qu’il restera haut placé après stabilisation de la méta.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="elinor">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=MyBNaWNrZXkgTW91c2UgLSBCZXN0IGluIFRvd24gKDE0LTIzKQozIFRob21hcyAtIFdpZGUtRXllZCBSZWNydWl0ICgxMS0xKQo0IEF1cm9yYSAtIEhvbGRpbmcgQ291cnQgKDktNikKNCBQbHV0byAtIEZyaWVuZGx5IFBvb2NoICg5LTIxKQo0IEJvYmJ5IFppbXVydXNraSAtIFNwcmF5IENoZWVzZSBLaWQgKDktNzgpCjQgUG9jYWhvbnRhcyAtIEd1aWRpbmcgdGhlIFRyaWJlICgxMy0xMikKNCBNaWtlIFdhem93c2tpIC0gSGVyb2ljIENsaW1iZXIgKDEzLTE4KQo0IERhdmlkIC0gUHJvdGVjdGl2ZSBTbm93Ym9hcmRlciAoMTEtOSkKNCBHcmFuZG1vdGhlciBXaWxsb3cgLSBBbmNpZW50IEFkdmlzb3IgKDExLTEzKQo0IFVyc3VsYSAtIERlY2VpdmVyICg5LTkwKQo0IE5hbmkgLSBTdGFnZSBNYW5hZ2VyICgxMS0yMCkKNCBEYWxlIC0gUmVhZHkgZm9yIEhpcyBTaG90ICgxMi0xNCkKMiBNaWNrZXkgTW91c2UgLSBFeHBlZGl0aW9uIExlYWRlciAoMTItMjYpCjIgUmFwdW56ZWwgLSBUb3dlciBEZWZlbmRlciAoMTMtODApCjQgRWxpbm9yIC0gUmVub3duZWQgRGlwbG9tYXQgKDEyLTg2KQo0IFBvY2Fob250YXMgLSBQZWFjZWtlZXBlciAoMTEtMjIpCjIgTGlvbmhlYXJ0IC0gSW5jdW1iZW50IE1heW9yICgxNC0xOCk%3D">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="elinor">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/7TdJo13X54MqQiJ7dGa0">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">17 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="elinor">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="elinor" href="#" download="RKS_elinor_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="elinor" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="elinor">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="elinor" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Elinor Princess Aggro" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 17 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="elinor">17 / 17 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="elinor"><select data-deck-ink="elinor"><option value="all">Toutes les encres</option><option value="AMBER">Ambre</option><option value="EMERALD">Émeraude</option></select><button class="labBtn ghost" type="button" data-lang-toggle="elinor">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="elinor"><article class="dlCard" data-cardkey="elinor:0" data-ink="AMBER" data-search="mickey mouse — le meilleur de la ville mickey mouse — best in town 23/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/23_fc2653e0dec5e88794802a50051ef36bbfcdfcbe.jpg" alt="Mickey Mouse — Le meilleur de la ville" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Mickey Mouse — Le meilleur de la ville</strong><strong class="enLabel" hidden>Mickey Mouse — Best in Town</strong><small>Ambre · Personnage · 23/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:1" data-ink="AMBER" data-search="thomas — recrue émerveillée thomas — wide-eyed recruit 1/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/1_6cef00990adaf40733019e3ecb3a51d295d02add.jpg" alt="Thomas — Recrue émerveillée" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Thomas — Recrue émerveillée</strong><strong class="enLabel" hidden>Thomas — Wide-Eyed Recruit</strong><small>Ambre · Personnage · 1/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:2" data-ink="AMBER" data-search="aurore — tient audiance aurora — holding court 6/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/6_0a0ccab27aa2d261e368a4b41f1e5e0cfb5ffcaa.jpg" alt="Aurore — Tient audiance" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Aurore — Tient audiance</strong><strong class="enLabel" hidden>Aurora — Holding Court</strong><small>Ambre · Personnage · 6/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:3" data-ink="AMBER" data-search="pluto — gentil cabot pluto — friendly pooch 21/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/21_f3b2eaeccc11e273c6e07ccf8eb44f9a0c2046dc.jpg" alt="Pluto — Gentil cabot" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Pluto — Gentil cabot</strong><strong class="enLabel" hidden>Pluto — Friendly Pooch</strong><small>Ambre · Personnage · 21/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:4" data-ink="EMERALD" data-search="bobby zimmeruski — fan de fromage en spray bobby zimuruski — spray cheese kid 78/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/78_6416b33e8ff3fd9c94e4236565f6af900cc98866.jpg" alt="Bobby Zimmeruski — Fan de fromage en spray" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Bobby Zimmeruski — Fan de fromage en spray</strong><strong class="enLabel" hidden>Bobby Zimuruski — Spray Cheese Kid</strong><small>Émeraude · Personnage · 78/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:5" data-ink="AMBER" data-search="pocahontas — guide la tribu pocahontas — guiding the tribe 12/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/12_b5cc794f3f4862bde5e76dff3cdf2a80981e1015.jpg" alt="Pocahontas — Guide la tribu" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Pocahontas — Guide la tribu</strong><strong class="enLabel" hidden>Pocahontas — Guiding the Tribe</strong><small>Ambre · Personnage · 12/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:6" data-ink="AMBER" data-search="bob razowski — grimpeur héroïque mike wazowski — heroic climber 18/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/18_7daf83b4e74189b1f2f7046fd8127263c80aa85b.jpg" alt="Bob Razowski — Grimpeur héroïque" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Bob Razowski — Grimpeur héroïque</strong><strong class="enLabel" hidden>Mike Wazowski — Heroic Climber</strong><small>Ambre · Personnage · 18/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:7" data-ink="AMBER" data-search="david — snowboardeur protecteur david — protective snowboarder 9/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/9_a05e5508852b11ef44b2f36ceb521e742d2a4107.jpg" alt="David — Snowboardeur protecteur" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">David — Snowboardeur protecteur</strong><strong class="enLabel" hidden>David — Protective Snowboarder</strong><small>Ambre · Personnage · 9/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:8" data-ink="AMBER" data-search="grand-mère feuillage — conseillère ancestrale grandmother willow — ancient advisor 13/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/13_48a7eb1a57b96464cc75bbe2aa383ea6570a46fd.jpg" alt="Grand-Mère Feuillage — Conseillère ancestrale" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Grand-Mère Feuillage — Conseillère ancestrale</strong><strong class="enLabel" hidden>Grandmother Willow — Ancient Advisor</strong><small>Ambre · Personnage · 13/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:9" data-ink="EMERALD" data-search="ursula — embobineuse ursula — deceiver 90/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/90_4ce046a53d46e99639b8b444472a999a5ab6173b.jpg" alt="Ursula — Embobineuse" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Ursula — Embobineuse</strong><strong class="enLabel" hidden>Ursula — Deceiver</strong><small>Émeraude · Personnage · 90/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:10" data-ink="AMBER" data-search="nani — régisseuse nani — stage manager 20/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/20_ae5bd38400164128e72e183dcd88ac818ae8c065.jpg" alt="Nani — Régisseuse" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Nani — Régisseuse</strong><strong class="enLabel" hidden>Nani — Stage Manager</strong><small>Ambre · Personnage · 20/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:11" data-ink="AMBER" data-search="tic — expert en récupération dale — ready for his shot 14/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/14_2a650ec61acc5ecf5daaaeec2cb6c2b781961427.jpg" alt="Tic — Expert en récupération" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Tic — Expert en récupération</strong><strong class="enLabel" hidden>Dale — Ready for His Shot</strong><small>Ambre · Personnage · 14/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:12" data-ink="AMBER" data-search="mickey mouse — chef d&#x27;expédition mickey mouse — expedition leader 26/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/26_c90d69048fe157f249fa7014ce05ce913057ef71.jpg" alt="Mickey Mouse — Chef d&#x27;expédition" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Mickey Mouse — Chef d&#x27;expédition</strong><strong class="enLabel" hidden>Mickey Mouse — Expedition Leader</strong><small>Ambre · Personnage · 26/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:13" data-ink="EMERALD" data-search="raiponce — défenseuse de la tour rapunzel — tower defender 80/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/80_97dc4ea22ed0a968054745a21a38086cc19718c6.jpg" alt="Raiponce — Défenseuse de la tour" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Raiponce — Défenseuse de la tour</strong><strong class="enLabel" hidden>Rapunzel — Tower Defender</strong><small>Émeraude · Personnage · 80/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:14" data-ink="EMERALD" data-search="elinor — diplomate renommée elinor — renowned diplomat 86/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/86_186deb58ae08664a0c584df6d6fecc9f8b2c7b42.jpg" alt="Elinor — Diplomate renommée" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Elinor — Diplomate renommée</strong><strong class="enLabel" hidden>Elinor — Renowned Diplomat</strong><small>Émeraude · Personnage · 86/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:15" data-ink="AMBER" data-search="pocahontas — gardienne de la paix pocahontas — peacekeeper 22/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/22_390010a459997409f70418c61400db7a61c1607c.jpg" alt="Pocahontas — Gardienne de la paix" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Pocahontas — Gardienne de la paix</strong><strong class="enLabel" hidden>Pocahontas — Peacekeeper</strong><small>Ambre · Personnage · 22/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="elinor:16" data-ink="AMBER" data-search="lionheart — maire en exercice lionheart — incumbent mayor 18/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/18_d19556388074cbc76febf5997cac123be4a027d1.jpg" alt="Lionheart — Maire en exercice" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Lionheart — Maire en exercice</strong><strong class="enLabel" hidden>Lionheart — Incumbent Mayor</strong><small>Ambre · Personnage · 18/204 FR 14</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-amethyst_steel" data-deck="amethyst_steel">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">05</span><span class="labInks"><span class="labDot" style="background:#b486ff" title="Améthyste"></span><span class="labDot" style="background:#b8cbd9" title="Acier"></span></span><span><strong>Améthyste / Acier Midrange</strong><small>Amethyst Steel Kahn Week 1 Update</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">A</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Très gros test à mener</div><h3>Améthyste / Acier Midrange</h3><p>Jouer un midrange interactif qui peut épuiser les cibles adverses puis prendre des défis très favorables, sans devoir revenir au vieux plan de ramp Ambre. La liste combine le tempo Améthyste et les outils de combat / gestion Acier.</p><div class="labStats"><span class="labStat">55,4 % BO1</span><span class="labStat">53,4 % BO3</span><span class="labStat">≈ 9 % du BO3</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 18 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/ufWMe4wBjWogIYScNmK2">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Ombre de Peter Pan épuise un personnage adverse à son arrivée.</li><li>Pepita – Watchful Alebrije gagne Offensif +2 et peut alors prendre l’échange ouvert par Peter Pan.</li><li>Dumbo et Shere Khan prolongent le plan de tempo : pioche/lore d’un côté, défis et gouttes d’encre de l’autre.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>Environ 60 % contre Princess Aggro, mais Detectives le bat autour de 62 %. Dan dit explicitement que le deck progresse à mesure que les « bonnes 60 cartes » se mettent en place.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=873s">▶ Vidéo 14:33</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>La liste est exacte et vérifiée sur le profil Dreamborn de Dan, mais la vidéo elle-même dit que l’archétype est encore en phase d’optimisation.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="amethyst_steel">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=NCBNYWxlZmljZW50IC0gRXh1bHRhbnQgU3BlbGxjYXN0ZXIgKDEzLTM5KQo0IEx1aXNhIE1hZHJpZ2FsIC0gUHVzaGluZyBUaHJvdWdoICgxMi02MikKMiBSYWZpa2kgLSBNeXN0aWNhbCBGaWdodGVyICg5LTM2KQo0IFBlcGl0YSAtIFdhdGNoZnVsIEFsZWJyaWplICgxNC00MCkKNCBGbGFzaCAtIEVmZmljaWVudCBDbGVyayAoMTQtMTcxKQoyIFRvdWxvdXNlIC0gUm91Z2ggYW5kIFR1bWJsZSAoMTQtMTgyKQo0IERpYWJsbyAtIFN0b25lIFNlcnZhbnQgKDEyLTE5NikKNCBQZXRlciBQYW4ncyBTaGFkb3cgLSBFbHVzaXZlIFByYW5rc3RlciAoMTQtNDcpCjQgQ2hlc2hpcmUgQ2F0IC0gSW5leHBsaWNhYmxlICgxMC02MCkKMyBBbmdlbGEgLSBOaWdodCBXYXJyaW9yICgxMS0xODcpCjEgTGV4aW5ndG9uIC0gU21hbGwgaW4gU3RhdHVyZSAoMTAtMTgzKQo0IER1bWJvIC0gTmludGggV29uZGVyIG9mIHRoZSBVbml2ZXJzZSAoOS00NSkKNCBTaGVyZSBLaGFuIC0gS2hhbiBJbmR1c3RyaWVzIENFTyAoMTQtMTk1KQoyIEFuZ2VsIC0gRXhwZXJpbWVudCA2MjQgKDExLTE5MSkKNCBIYWRlcyAtIExvb2tpbmcgZm9yIGEgRGVhbCAoMTAtNTYpCjQgRGVtb25hIC0gU2NvdXJnZSBvZiB0aGUgV3l2ZXJuIENsYW4gKDEwLTU1KQoyIE1hbGVmaWNlbnQgJiBEaWFibG8gLSBFdmlsIEluY2FybmF0ZSAoMTMtNjMpCjQgU3RyZW5ndGggb2YgYSBSYWdpbmcgRmlyZSAoOS0yMDEp">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="amethyst_steel">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/ufWMe4wBjWogIYScNmK2">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">18 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="amethyst_steel">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="amethyst_steel" href="#" download="RKS_amethyst_steel_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="amethyst_steel" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="amethyst_steel">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="amethyst_steel" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Améthyste / Acier Midrange" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 18 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="amethyst_steel">18 / 18 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="amethyst_steel"><select data-deck-ink="amethyst_steel"><option value="all">Toutes les encres</option><option value="AMETHYST">Améthyste</option><option value="STEEL">Acier</option></select><button class="labBtn ghost" type="button" data-lang-toggle="amethyst_steel">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="amethyst_steel"><article class="dlCard" data-cardkey="amethyst_steel:0" data-ink="AMETHYST" data-search="maléfique — lanceuse de sorts exultante maleficent — exultant spellcaster 39/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/39_6c22220198a5adf8736b2068b5b7adafaf7b5405.jpg" alt="Maléfique — Lanceuse de sorts exultante" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Maléfique — Lanceuse de sorts exultante</strong><strong class="enLabel" hidden>Maleficent — Exultant Spellcaster</strong><small>Améthyste · Personnage · 39/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:1" data-ink="AMETHYST" data-search="luisa madrigal — pousse jusqu&#x27;au bout luisa madrigal — pushing through 62/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/62_34275e96f01b5f9e2e84dd2df6e294570cb58bf9.jpg" alt="Luisa Madrigal — Pousse jusqu&#x27;au bout" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Luisa Madrigal — Pousse jusqu&#x27;au bout</strong><strong class="enLabel" hidden>Luisa Madrigal — Pushing Through</strong><small>Améthyste · Personnage · 62/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:2" data-ink="AMETHYST" data-search="rafiki — combattant mystique rafiki — mystical fighter 36/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/36_1683d6ad30cb6d6fe74c37bb8880e33a8b217a4a.jpg" alt="Rafiki — Combattant mystique" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Rafiki — Combattant mystique</strong><strong class="enLabel" hidden>Rafiki — Mystical Fighter</strong><small>Améthyste · Personnage · 36/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:3" data-ink="AMETHYST" data-search="pepita — alebrije vigilante pepita — watchful alebrije 40/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/40_ac0c3ba010ee82e32c78f0ab8a00fd18ca64c913.jpg" alt="Pepita — Alebrije vigilante" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Pepita — Alebrije vigilante</strong><strong class="enLabel" hidden>Pepita — Watchful Alebrije</strong><small>Améthyste · Personnage · 40/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:4" data-ink="STEEL" data-search="flash — employé efficace flash — efficient clerk 171/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/171_d70e328c491e5d2da892a116f81e26c38e2967af.jpg" alt="Flash — Employé efficace" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Flash — Employé efficace</strong><strong class="enLabel" hidden>Flash — Efficient Clerk</strong><small>Acier · Personnage · 171/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:5" data-ink="STEEL" data-search="toulouse — chahuteur et turbulent toulouse — rough and tumble 182/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/182_8cb23d85ffeb453b95a2a51229e09234a71bee45.jpg" alt="Toulouse — Chahuteur et turbulent" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Toulouse — Chahuteur et turbulent</strong><strong class="enLabel" hidden>Toulouse — Rough and Tumble</strong><small>Acier · Personnage · 182/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:6" data-ink="STEEL" data-search="diablo — serviteur de pierre diablo — stone servant 196/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/196_2c6340581288923d42ca714f65ad2974a2e21985.jpg" alt="Diablo — Serviteur de pierre" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Diablo — Serviteur de pierre</strong><strong class="enLabel" hidden>Diablo — Stone Servant</strong><small>Acier · Personnage · 196/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:7" data-ink="AMETHYST" data-search="ombre de peter pan — farceur insaisissable peter pan&#x27;s shadow — elusive prankster 47/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/47_329dcb6567fa52c29eb0e3d8c4c7ae72ad0e0aa8.jpg" alt="Ombre de Peter Pan — Farceur insaisissable" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Ombre de Peter Pan — Farceur insaisissable</strong><strong class="enLabel" hidden>Peter Pan&#x27;s Shadow — Elusive Prankster</strong><small>Améthyste · Personnage · 47/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:8" data-ink="AMETHYST" data-search="chat du cheshire — inexplicable cheshire cat — inexplicable 60/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/60_e633f03192974c952ef5deb55f42c7a4d227cafd.jpg" alt="Chat du Cheshire — Inexplicable" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Chat du Cheshire — Inexplicable</strong><strong class="enLabel" hidden>Cheshire Cat — Inexplicable</strong><small>Améthyste · Personnage · 60/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:9" data-ink="STEEL" data-search="angela — guerrière de la nuit angela — night warrior 187/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/187_55ffc86ad1a1b8580f3ced1742beb57dd5817b3e.jpg" alt="Angela — Guerrière de la nuit" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Angela — Guerrière de la nuit</strong><strong class="enLabel" hidden>Angela — Night Warrior</strong><small>Acier · Personnage · 187/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:10" data-ink="STEEL" data-search="lexington — de petite stature lexington — small in stature 183/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/183_b1297d873960d6ebc20002e74c85bb1fee50d9a0.jpg" alt="Lexington — De petite stature" loading="lazy"><span class="dlQty">×1</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Lexington — De petite stature</strong><strong class="enLabel" hidden>Lexington — Small in Stature</strong><small>Acier · Personnage · 183/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:11" data-ink="AMETHYST" data-search="dumbo — neuvième merveille du monde dumbo — ninth wonder of the universe 45/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/45_e773ef7e1bf05eac5bcccd66b26065d4228e289d.jpg" alt="Dumbo — Neuvième merveille du monde" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Dumbo — Neuvième merveille du monde</strong><strong class="enLabel" hidden>Dumbo — Ninth Wonder of the Universe</strong><small>Améthyste · Personnage · 45/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:12" data-ink="STEEL" data-search="shere khan — pdg des industries khan shere khan — khan industries ceo 195/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/195_d76246a8fc713f09f26b8da7c984d181147d1172.jpg" alt="Shere Khan — PDG des Industries Khan" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Shere Khan — PDG des Industries Khan</strong><strong class="enLabel" hidden>Shere Khan — Khan Industries CEO</strong><small>Acier · Personnage · 195/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:13" data-ink="STEEL" data-search="angel — expérience 624 angel — experiment 624 191/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/191_540e91742553f9b42c6732c756d6484e71c9fe04.jpg" alt="Angel — Expérience 624" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Angel — Expérience 624</strong><strong class="enLabel" hidden>Angel — Experiment 624</strong><small>Acier · Personnage · 191/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:14" data-ink="AMETHYST" data-search="hadès — cherchant un accord hades — looking for a deal 56/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/56_695a738c41a2b6756bfea83c1ef876c8e85e4800.jpg" alt="Hadès — Cherchant un accord" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Hadès — Cherchant un accord</strong><strong class="enLabel" hidden>Hades — Looking for a Deal</strong><small>Améthyste · Personnage · 56/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:15" data-ink="AMETHYST" data-search="démona — fléau du clan de wyvern demona — scourge of the wyvern clan 55/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/55_3da73cb6829098ce537519b297747870a654df85.jpg" alt="Démona — Fléau du Clan de Wyvern" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Démona — Fléau du Clan de Wyvern</strong><strong class="enLabel" hidden>Demona — Scourge of the Wyvern Clan</strong><small>Améthyste · Personnage · 55/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:16" data-ink="AMETHYST" data-search="maléfique &amp; diablo — le mal incarné maleficent &amp; diablo — evil incarnate 63/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/63_8670dc1aaed32619c16a8b4179bde4359c48bda1.jpg" alt="Maléfique &amp; Diablo — Le mal incarné" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Maléfique &amp; Diablo — Le mal incarné</strong><strong class="enLabel" hidden>Maleficent &amp; Diablo — Evil Incarnate</strong><small>Améthyste · Personnage · 63/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="amethyst_steel:17" data-ink="STEEL" data-search="plus ardent que le feu des volcans strength of a raging fire 201/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/201_f12a0182f591c61fc1d5669be0d6163309fbb68c.jpg" alt="Plus ardent que le feu des volcans" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Plus ardent que le feu des volcans</strong><strong class="enLabel" hidden>Strength of a Raging Fire</strong><small>Acier · Action · 201/204 FR 9</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-mouse_house" data-deck="mouse_house">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">06</span><span class="labInks"><span class="labDot" style="background:#48d39b" title="Émeraude"></span><span class="labDot" style="background:#5ab2ff" title="Saphir"></span></span><span><strong>Mouse House</strong><small>Mouse House Week 1</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">C</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">À éviter pour l’instant</div><h3>Mouse House</h3><p>Assembler ses lignes Mickey / Minnie, poser une grosse menace après l’autre et gagner par la qualité intrinsèque des personnages. Le souci Week 1 n’est pas l’absence de cartes intéressantes, mais le manque d’interaction avec un field qui joue très large.</p><div class="labStats"><span class="labStat">51,0 % BO1</span><span class="labStat">44,9 % BO3</span><span class="labStat">≈ 10 % du BO1</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 16 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/m1lznpeteRegohB7sNii">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Minnie Mouse – Urban Visionary est une nouvelle grosse récompense du package Minnie.</li><li>Les multiples versions de Mickey/Minnie alimentent le plan de synergie du deck.</li><li>Le deck a moins de boutons de reset que les listes qui attaquent son board en largeur.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>C’est le signal négatif le plus clair de la vidéo : 44,9 % en BO3. Dan conseille explicitement de ne pas commencer les semaines 1–2 avec cette liste dans le contexte actuel.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1002s">▶ Vidéo 16:42</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>Dan laisse ouverte la possibilité d’un retour si la méta ralentit et redevient plus midrange. Le verdict est donc contextuel, pas définitif sur l’archétype.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="mouse_house">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=NCBNaW5uaWUgTW91c2UgLSBDdXJpb3VzIEFkdmVudHVyZXIgKDEzLTg3KQo0IE1pbm5pZSBNb3VzZSAtIFByYWN0aWNhbCBUcmF2ZWxlciAoMTItMTU5KQoyIE1pbm5pZSBNb3VzZSAtIEJ1c3kgR28tR2V0dGVyICgxNC05MikKNCBNaW5uaWUgTW91c2UgLSBTcGlubmluZyBTa2F0ZXIgKDExLTcyKQozIFRob21hcyBPJ01hbGxleSAtIFNhdnZ5IFZhZ2Fib25kICgxNC0xNTIpCjQgTWlja2V5IE1vdXNlIC0gQm9iIENyYXRjaGl0ICgxMS0xNTkpCjQgVG9kIC0gQ2xldmVyIEZveCAoMTMtODEpCjQgTWlja2V5IE1vdXNlIC0gRGV0ZWN0aXZlICgxMC0xNjApCjQgRHIuIEJ1c2hyb290IC0gRXZpbCBCb3RhbmlzdCAoMTMtOTIpCjMgU2N1dHRsZSAtIEJpcmRicmFpbmVkICgxMC0xNDcpCjQgV2luaWZyZWQgLSBFeGFzcGVyYXRlZCBFbGVwaGFudCAoMTMtODQpCjQgSGFkZXMgLSBNZXRpY3Vsb3VzIFNjaGVtZXIgKDEzLTE1NikKNCBNaWNrZXkgTW91c2UgJiBNaW5uaWUgTW91c2UgLSBBZHZlbnR1cmluZyBEdW8gKDEzLTk5KQo0IE1pbG8gVGhhdGNoIC0gR2V0dGluZyBIaXMgSGFuZHMgRGlydHkgKDEyLTgyKQo0IEhhZGVzIC0gSW5mZXJuYWwgU2NoZW1lciAoOS0xNTEpCjQgTWlubmllIE1vdXNlIC0gVXJiYW4gVmlzaW9uYXJ5ICgxNC0xNTUp">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="mouse_house">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/m1lznpeteRegohB7sNii">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">16 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="mouse_house">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="mouse_house" href="#" download="RKS_mouse_house_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="mouse_house" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="mouse_house">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="mouse_house" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Mouse House" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 16 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="mouse_house">16 / 16 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="mouse_house"><select data-deck-ink="mouse_house"><option value="all">Toutes les encres</option><option value="EMERALD">Émeraude</option><option value="SAPPHIRE">Saphir</option></select><button class="labBtn ghost" type="button" data-lang-toggle="mouse_house">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="mouse_house"><article class="dlCard" data-cardkey="mouse_house:0" data-ink="EMERALD" data-search="minnie — aventurière curieuse minnie mouse — curious adventurer 87/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/87_2b777829847ef1916c9c0e110da90c791a81ff49.jpg" alt="Minnie — Aventurière curieuse" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Minnie — Aventurière curieuse</strong><strong class="enLabel" hidden>Minnie Mouse — Curious Adventurer</strong><small>Émeraude · Personnage · 87/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:1" data-ink="SAPPHIRE" data-search="minnie — voyageuse à l&#x27;esprit pratique minnie mouse — practical traveler 159/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/159_974a349d0356d52a37eaee078cf3b06240c1f465.jpg" alt="Minnie — Voyageuse à l&#x27;esprit pratique" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Minnie — Voyageuse à l&#x27;esprit pratique</strong><strong class="enLabel" hidden>Minnie Mouse — Practical Traveler</strong><small>Saphir · Personnage · 159/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:2" data-ink="EMERALD" data-search="minnie — fonceuse occupée minnie mouse — busy go-getter 92/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/92_ccdce8a0cfbd1222b6bd1f3687da75673ca3d2f4.jpg" alt="Minnie — Fonceuse occupée" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Minnie — Fonceuse occupée</strong><strong class="enLabel" hidden>Minnie Mouse — Busy Go-Getter</strong><small>Émeraude · Personnage · 92/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:3" data-ink="EMERALD" data-search="minnie — patineuse virevoltante minnie mouse — spinning skater 72/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/72_6c6c82c6213add4e942ebf70edefea07253bb57f.jpg" alt="Minnie — Patineuse virevoltante" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Minnie — Patineuse virevoltante</strong><strong class="enLabel" hidden>Minnie Mouse — Spinning Skater</strong><small>Émeraude · Personnage · 72/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:4" data-ink="SAPPHIRE" data-search="thomas o’malley — vagabond avisé thomas o&#x27;malley — savvy vagabond 152/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/152_1b95b4f7a78b4f36ef4045b6b419b8e975e309c6.jpg" alt="Thomas O’Malley — Vagabond avisé" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Thomas O’Malley — Vagabond avisé</strong><strong class="enLabel" hidden>Thomas O&#x27;Malley — Savvy Vagabond</strong><small>Saphir · Personnage · 152/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:5" data-ink="SAPPHIRE" data-search="mickey mouse — bob cratchit mickey mouse — bob cratchit 159/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/159_4505b1e2dc4ce04ae8e934e5f6cfad474d3659bd.jpg" alt="Mickey Mouse — Bob Cratchit" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Mickey Mouse — Bob Cratchit</strong><strong class="enLabel" hidden>Mickey Mouse — Bob Cratchit</strong><small>Saphir · Personnage · 159/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:6" data-ink="EMERALD" data-search="rox — renard rusé tod — clever fox 81/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/81_8cd6950136e9574a1616012f719379e4a2acd30d.jpg" alt="Rox — Renard rusé" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Rox — Renard rusé</strong><strong class="enLabel" hidden>Tod — Clever Fox</strong><small>Émeraude · Personnage · 81/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:7" data-ink="SAPPHIRE" data-search="mickey mouse — détective mickey mouse — detective 160/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/160_881a1212441c0e192f0f3552987073d4e073e334.jpg" alt="Mickey Mouse — Détective" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Mickey Mouse — Détective</strong><strong class="enLabel" hidden>Mickey Mouse — Detective</strong><small>Saphir · Personnage · 160/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:8" data-ink="EMERALD" data-search="dr raidi moudugenou — botaniste maléfique dr. bushroot — evil botanist 92/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/92_aa8f337ba729efe711a06ffb24a9102da337c40d.jpg" alt="Dr Raidi Moudugenou — Botaniste maléfique" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Dr Raidi Moudugenou — Botaniste maléfique</strong><strong class="enLabel" hidden>Dr. Bushroot — Evil Botanist</strong><small>Émeraude · Personnage · 92/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:9" data-ink="SAPPHIRE" data-search="eurêka — tête de linotte scuttle — birdbrained 147/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/147_59b5ec3a7581a47c9fadb4cf030b47f179f42aff.jpg" alt="Eurêka — Tête de linotte" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Eurêka — Tête de linotte</strong><strong class="enLabel" hidden>Scuttle — Birdbrained</strong><small>Saphir · Personnage · 147/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:10" data-ink="EMERALD" data-search="winifred — éléphante exaspérée winifred — exasperated elephant 84/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/84_f22acb8dbcbe9a0c328fe9a94f7bbb88224972e5.jpg" alt="Winifred — Éléphante exaspérée" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Winifred — Éléphante exaspérée</strong><strong class="enLabel" hidden>Winifred — Exasperated Elephant</strong><small>Émeraude · Personnage · 84/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:11" data-ink="SAPPHIRE" data-search="hadès — comploteur méticuleux hades — meticulous schemer 156/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/156_025241159b18bc58226c29dee00a2e4a25bc3723.jpg" alt="Hadès — Comploteur méticuleux" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Hadès — Comploteur méticuleux</strong><strong class="enLabel" hidden>Hades — Meticulous Schemer</strong><small>Saphir · Personnage · 156/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:12" data-ink="EMERALD" data-search="mickey mouse &amp; minnie — duo d&#x27;aventuriers mickey mouse &amp; minnie mouse — adventuring duo 99/207 fr 13">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set13/99_690e3ba0f63d6ec6c52a5f1663f1c593e96198e1.jpg" alt="Mickey Mouse &amp; Minnie — Duo d&#x27;aventuriers" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Mickey Mouse &amp; Minnie — Duo d&#x27;aventuriers</strong><strong class="enLabel" hidden>Mickey Mouse &amp; Minnie Mouse — Adventuring Duo</strong><small>Émeraude · Personnage · 99/207 FR 13</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:13" data-ink="EMERALD" data-search="milo thatch — se salit les mains milo thatch — getting his hands dirty 82/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/82_20509ba12fda0c883f613b834a34b02f2dae977f.jpg" alt="Milo Thatch — Se salit les mains" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Milo Thatch — Se salit les mains</strong><strong class="enLabel" hidden>Milo Thatch — Getting His Hands Dirty</strong><small>Émeraude · Personnage · 82/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:14" data-ink="SAPPHIRE" data-search="hadès — conspirateur infernal hades — infernal schemer 151/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/151_e9064a14eb7c82dbdc653b967b1a5a4ea8b3cf9a.jpg" alt="Hadès — Conspirateur infernal" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">7</span></div>
+      <div class="dlText"><strong class="frLabel">Hadès — Conspirateur infernal</strong><strong class="enLabel" hidden>Hades — Infernal Schemer</strong><small>Saphir · Personnage · 151/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="mouse_house:15" data-ink="SAPPHIRE" data-search="minnie — visionnaire urbaniste minnie mouse — urban visionary 155/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/155_5f06ea5bcf6c6f7a3e5b8892db72988dfa7919b6.jpg" alt="Minnie — Visionnaire urbaniste" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">8</span></div>
+      <div class="dlText"><strong class="frLabel">Minnie — Visionnaire urbaniste</strong><strong class="enLabel" hidden>Minnie Mouse — Urban Visionary</strong><small>Saphir · Personnage · 155/204 FR 14</small></div>
+    </article></div>
+      </div>
+    </details>
+    <details class="deckLab" id="lab-ruby_amethyst" data-deck="ruby_amethyst">
+      <summary>
+        <div class="labSummaryLeft"><span class="labIndex">07</span><span class="labInks"><span class="labDot" style="background:#f06d78" title="Rubis"></span><span class="labDot" style="background:#b486ff" title="Améthyste"></span></span><span><strong>Rubis / Améthyste Tap</strong><small>RA Tap Week 1</small></span></div>
+        <div class="labSummaryRight"><span class="verifyBadge">✓ LISTE 60 VÉRIFIÉE</span><span class="labGrade">?</span></div>
+      </summary>
+      <div class="labBody">
+        <div class="labHero">
+          <div><div class="labVerdict">Sleeper / watchlist</div><h3>Rubis / Améthyste Tap</h3><p>Créer des fenêtres de défi en épuisant les personnages adverses, puis exploiter Wasabi pour transformer un premier échange en dommages supplémentaires sur une deuxième cible. Le shell est encore en construction mais possède une identité claire.</p><div class="labStats"><span class="labStat">61,1 % BO1*</span><span class="labStat">53,4 % BO3*</span><span class="labStat">180 parties / 73 matchs</span></div></div>
+          <div class="labSource"><span>Source deck exacte</span><b>Dreamborn · Dan Arnold Lorcana</b><small>60 / 60 cartes · 17 références · aucune carte reconstituée</small><a class="miniBtn" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/ljZQdVvjufhjWMaPaLF4">↗ Ouvrir Dreamborn</a></div>
+        </div>
+        <div class="labAnalysis">
+          <div class="labPanel"><h4>Interactions clés</h4><ul><li>Ombre de Peter Pan, Elsa et Isis Vanderchill fournissent plusieurs façons d’épuiser les personnages adverses.</li><li>Wasabi – Called into Battle récompense les défis en projetant des dommages sur une autre cible.</li><li>Dumbo – The Flying Elephant peut donner Insaisissable pour aider à gérer certaines cibles difficiles.</li></ul></div>
+          <div class="labPanel"><h4>Matchups / positionnement</h4><p>Les chiffres sont prometteurs mais le sample est trop petit pour le classer avec les leaders : seulement 180 parties BO1 réparties sur 16 listes et 73 matchs BO3.</p><a class="timeLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=iKc1CkkTKK4&t=1155s">▶ Vidéo 19:15</a></div>
+          <div class="labPanel caution"><h4>Point de vigilance</h4><p>Le 61,1 % BO1 n’est pas traité comme un Tier S. Le rapport conserve exactement la prudence exprimée dans la vidéo.</p></div>
+        </div>
+        <div class="labTools">
+          <button class="labBtn" type="button" data-copy-import="ruby_amethyst">⎘ Copier la liste 60</button>
+          <a class="labBtn purple" target="_blank" rel="noopener" href="https://duels.ink/decks/new?import=NCBSYWZpa2kgLSBNeXN0aWNhbCBGaWdodGVyICg5LTM2KQo0IE11bGFuIC0gSW5qdXJlZCBTb2xkaWVyICg5LTEyNSkKMyBKZWJpZGlhaCBGYXJuc3dvcnRoIC0gQ29va2llICgxMi0xMTcpCjQgTGlxdWlkYXRvciAtIEljZWQgT3ZlciAoMTEtMTExKQo0IFBldGVyIFBhbidzIFNoYWRvdyAtIEVsdXNpdmUgUHJhbmtzdGVyICgxNC00NykKNCBDaGVzaGlyZSBDYXQgLSBJbmV4cGxpY2FibGUgKDEwLTYwKQozIER1bWJvIC0gVGhlIEZseWluZyBFbGVwaGFudCAoOS00NikKMyBFbHNhIC0gU25vdyBRdWVlbiAoOS01MykKNCBJc2lzIFZhbmRlcmNoaWxsIC0gSWNlIFF1ZWVuIG9mIFN0LiBDYW5hcmQgKDExLTM4KQo0IER1bWJvIC0gTmludGggV29uZGVyIG9mIHRoZSBVbml2ZXJzZSAoOS00NSkKNCBNdWxhbiAtIE1hcnRpYWwgQXJ0cyBNYXN0ZXIgKDE0LTEyNykKMiBWaW5jZW56byBTYW50b3JpbmkgLSBPbiB0aGUgUnVuICgxMi0xMjQpCjMgSGFkZXMgLSBMb29raW5nIGZvciBhIERlYWwgKDEwLTU2KQo0IFdhc2FiaSAtIENhbGxlZCBpbnRvIEJhdHRsZSAoMTQtMTI1KQo0IERlbW9uYSAtIFNjb3VyZ2Ugb2YgdGhlIFd5dmVybiBDbGFuICgxMC01NSkKMyBNdWxhbiAtIEVsaXRlIEFyY2hlciAoOS0xMjYpCjMgTWVkYWxsaW9uIFdlaWdodHMgKDktMTM0KQ%3D%3D">⚔ Exporter vers Duels.ink</a>
+          <button class="labBtn" type="button" data-download-txt="ruby_amethyst">⬇ Liste .txt</button>
+          <a class="labBtn ghost" target="_blank" rel="noopener" href="https://dreamborn.ink/decks/ljZQdVvjufhjWMaPaLF4">↗ Dreamborn</a>
+        </div>
+        <div class="deckPngBox">
+          <div class="deckPngHead"><div><span class="pngEyebrow">PNG DU DECK · VISUELS OFFICIELS</span><h4>Deck complet en image</h4><p>Reconstruit depuis les visuels officiels FR, sans déformation, avec quantité affichée sur chaque référence.</p></div><span class="pngMeta">17 références · 60 cartes</span></div>
+          <div class="labTools"><button class="labBtn gold" type="button" data-generate-png="ruby_amethyst">▣ Générer le PNG</button><a class="labBtn disabled" data-download-png="ruby_amethyst" href="#" download="RKS_ruby_amethyst_Week1.png" aria-disabled="true">⬇ Télécharger le PNG</a><button class="labBtn disabled" type="button" data-open-png="ruby_amethyst" disabled>🔎 Agrandir</button></div>
+          <div class="pngStatus" data-png-status="ruby_amethyst">PNG non généré — cliquez sur « Générer le PNG ».</div>
+          <button class="pngPreview" type="button" data-preview-png="ruby_amethyst" disabled><span>Aperçu du deck après génération</span><img alt="PNG du deck Rubis / Améthyste Tap" hidden></button>
+        </div>
+        <div class="deckListHead"><div><h4>Decklist exacte — 17 références / 60 cartes</h4><p>Images et noms FR : sources officielles Disney Lorcana / Ravensburger. Noms EN : deck Dreamborn exact de Dan Arnold.</p></div><span data-visible-count="ruby_amethyst">17 / 17 références</span></div>
+        <div class="dlToolbar"><input type="search" placeholder="Rechercher une carte…" data-deck-search="ruby_amethyst"><select data-deck-ink="ruby_amethyst"><option value="all">Toutes les encres</option><option value="RUBY">Rubis</option><option value="AMETHYST">Améthyste</option></select><button class="labBtn ghost" type="button" data-lang-toggle="ruby_amethyst">EN</button></div>
+        <div class="deckListGrid" data-deck-grid="ruby_amethyst"><article class="dlCard" data-cardkey="ruby_amethyst:0" data-ink="AMETHYST" data-search="rafiki — combattant mystique rafiki — mystical fighter 36/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/36_1683d6ad30cb6d6fe74c37bb8880e33a8b217a4a.jpg" alt="Rafiki — Combattant mystique" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Rafiki — Combattant mystique</strong><strong class="enLabel" hidden>Rafiki — Mystical Fighter</strong><small>Améthyste · Personnage · 36/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:1" data-ink="RUBY" data-search="mulan — soldate blessée mulan — injured soldier 125/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/125_c9add48efb964b5af8a7bd8cf2515507eb64e4b7.jpg" alt="Mulan — Soldate blessée" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">1</span></div>
+      <div class="dlText"><strong class="frLabel">Mulan — Soldate blessée</strong><strong class="enLabel" hidden>Mulan — Injured Soldier</strong><small>Rubis · Personnage · 125/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:2" data-ink="RUBY" data-search="jebidiah farnsworth — cookie jebidiah farnsworth — cookie 117/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/117_513572b79a9c97d1940b34cd60763fcc3c8206a7.jpg" alt="Jebidiah Farnsworth — Cookie" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Jebidiah Farnsworth — Cookie</strong><strong class="enLabel" hidden>Jebidiah Farnsworth — Cookie</strong><small>Rubis · Personnage · 117/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:3" data-ink="RUBY" data-search="liquidator — couvert de glace liquidator — iced over 111/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/111_46130646e9a0c1cbe6aa76904564ef6ae1558f24.jpg" alt="Liquidator — Couvert de glace" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Liquidator — Couvert de glace</strong><strong class="enLabel" hidden>Liquidator — Iced Over</strong><small>Rubis · Personnage · 111/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:4" data-ink="AMETHYST" data-search="ombre de peter pan — farceur insaisissable peter pan&#x27;s shadow — elusive prankster 47/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/47_329dcb6567fa52c29eb0e3d8c4c7ae72ad0e0aa8.jpg" alt="Ombre de Peter Pan — Farceur insaisissable" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Ombre de Peter Pan — Farceur insaisissable</strong><strong class="enLabel" hidden>Peter Pan&#x27;s Shadow — Elusive Prankster</strong><small>Améthyste · Personnage · 47/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:5" data-ink="AMETHYST" data-search="chat du cheshire — inexplicable cheshire cat — inexplicable 60/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/60_e633f03192974c952ef5deb55f42c7a4d227cafd.jpg" alt="Chat du Cheshire — Inexplicable" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Chat du Cheshire — Inexplicable</strong><strong class="enLabel" hidden>Cheshire Cat — Inexplicable</strong><small>Améthyste · Personnage · 60/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:6" data-ink="AMETHYST" data-search="dumbo — l’éléphant volant dumbo — the flying elephant 46/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/46_8c256355df092a30236f6718a6ffd245c80c4e11.jpg" alt="Dumbo — L’éléphant volant" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Dumbo — L’éléphant volant</strong><strong class="enLabel" hidden>Dumbo — The Flying Elephant</strong><small>Améthyste · Personnage · 46/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:7" data-ink="AMETHYST" data-search="elsa — reine des neiges elsa — snow queen 53/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/53_cc50319e819a1767d7760e87a1c2b6c6789db844.jpg" alt="Elsa — Reine des Neiges" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">3</span></div>
+      <div class="dlText"><strong class="frLabel">Elsa — Reine des Neiges</strong><strong class="enLabel" hidden>Elsa — Snow Queen</strong><small>Améthyste · Personnage · 53/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:8" data-ink="AMETHYST" data-search="fraîcheneige von frimas — reine des glaces de bourg-les-canards isis vanderchill — ice queen of st. canard 38/204 fr 11">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set11/38_6c69b57cf883ce1511b2085195b3efb0323027a2.jpg" alt="Fraîcheneige von Frimas — Reine des Glaces de Bourg-les-Canards" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Fraîcheneige von Frimas — Reine des Glaces de Bourg-les-Canards</strong><strong class="enLabel" hidden>Isis Vanderchill — Ice Queen of St. Canard</strong><small>Améthyste · Personnage · 38/204 FR 11</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:9" data-ink="AMETHYST" data-search="dumbo — neuvième merveille du monde dumbo — ninth wonder of the universe 45/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/45_e773ef7e1bf05eac5bcccd66b26065d4228e289d.jpg" alt="Dumbo — Neuvième merveille du monde" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Dumbo — Neuvième merveille du monde</strong><strong class="enLabel" hidden>Dumbo — Ninth Wonder of the Universe</strong><small>Améthyste · Personnage · 45/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:10" data-ink="RUBY" data-search="mulan — maîtresse en arts martiaux mulan — martial arts master 127/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/127_b9c177d63eaab8a85c652cd2597430b95423cad4.jpg" alt="Mulan — Maîtresse en arts martiaux" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Mulan — Maîtresse en arts martiaux</strong><strong class="enLabel" hidden>Mulan — Martial Arts Master</strong><small>Rubis · Personnage · 127/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:11" data-ink="RUBY" data-search="vincenzo santorini — en fuite vincenzo santorini — on the run 124/204 fr 12">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set12/124_73d66ea651fb1b2c87da1b0eee4b944e10a5f408.jpg" alt="Vincenzo Santorini — En fuite" loading="lazy"><span class="dlQty">×2</span><span class="dlCost">4</span></div>
+      <div class="dlText"><strong class="frLabel">Vincenzo Santorini — En fuite</strong><strong class="enLabel" hidden>Vincenzo Santorini — On the Run</strong><small>Rubis · Personnage · 124/204 FR 12</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:12" data-ink="AMETHYST" data-search="hadès — cherchant un accord hades — looking for a deal 56/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/56_695a738c41a2b6756bfea83c1ef876c8e85e4800.jpg" alt="Hadès — Cherchant un accord" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Hadès — Cherchant un accord</strong><strong class="enLabel" hidden>Hades — Looking for a Deal</strong><small>Améthyste · Personnage · 56/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:13" data-ink="RUBY" data-search="wasabi — appelé au combat wasabi — called into battle 125/204 fr 14">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set14/125_7c0f91a6cf1cd92358c3ac45626d82076523f40a.jpg" alt="Wasabi — Appelé au combat" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">5</span></div>
+      <div class="dlText"><strong class="frLabel">Wasabi — Appelé au combat</strong><strong class="enLabel" hidden>Wasabi — Called into Battle</strong><small>Rubis · Personnage · 125/204 FR 14</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:14" data-ink="AMETHYST" data-search="démona — fléau du clan de wyvern demona — scourge of the wyvern clan 55/204 fr 10">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set10/55_3da73cb6829098ce537519b297747870a654df85.jpg" alt="Démona — Fléau du Clan de Wyvern" loading="lazy"><span class="dlQty">×4</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Démona — Fléau du Clan de Wyvern</strong><strong class="enLabel" hidden>Demona — Scourge of the Wyvern Clan</strong><small>Améthyste · Personnage · 55/204 FR 10</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:15" data-ink="RUBY" data-search="mulan — archère d&#x27;élite mulan — elite archer 126/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/126_b0de7495d97adfdbdf9c37c58fc2287bcec55ff5.jpg" alt="Mulan — Archère d&#x27;élite" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">6</span></div>
+      <div class="dlText"><strong class="frLabel">Mulan — Archère d&#x27;élite</strong><strong class="enLabel" hidden>Mulan — Elite Archer</strong><small>Rubis · Personnage · 126/204 FR 9</small></div>
+    </article><article class="dlCard" data-cardkey="ruby_amethyst:16" data-ink="RUBY" data-search="médaillons lestés medallion weights 134/204 fr 9">
+      <div class="dlImgWrap"><img src="https://api.lorcana.ravensburger.com/images/fr/set9/134_f87c0b386cf87dbce03b794296086333d744a025.jpg" alt="Médaillons Lestés" loading="lazy"><span class="dlQty">×3</span><span class="dlCost">2</span></div>
+      <div class="dlText"><strong class="frLabel">Médaillons Lestés</strong><strong class="enLabel" hidden>Medallion Weights</strong><small>Rubis · Objet · 134/204 FR 9</small></div>
+    </article></div>
+      </div>
+    </details></div>
+  </div>
+</section>
+
+<section class="section" id="matchups">
+  <div class="wrap">
+    <div class="eyebrow">04 / MATCHUP MAP</div>
+    <h2>Le triangle qui définit les premières semaines</h2>
+    <p class="desc">Dan souligne un triangle déjà visible entre Princess Aggro, Detectives et Amethyst / Steel. Emerald / Steel se place au-dessus de ce triangle grâce à deux matchups positifs mesurés, tandis que Circle of Life reste proche du 50/50 contre presque tout.</p>
+
+    <div class="matchGrid">
+      <div class="triangle" aria-label="Triangle de matchups">
+        <div class="greenHalo"></div>
+        <div class="node n1"><span class="inks"><span class="dot" style="background:var(--amber)"></span><span class="dot" style="background:var(--green)"></span></span><br>Princess Aggro<small>bat Detectives</small></div>
+        <div class="node n2"><span class="inks"><span class="dot" style="background:var(--amber)"></span><span class="dot" style="background:var(--sapphire)"></span></span><br>Detectives<small>62 % vs Amethyst / Steel</small></div>
