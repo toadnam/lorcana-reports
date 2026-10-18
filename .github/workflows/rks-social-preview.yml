@@ -1,0 +1,91 @@
+name: RKS social preview
+
+on:
+  push:
+    paths:
+      - '**/preview-source.json'
+      - '.github/workflows/rks-social-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pillow
+      - name: Generate previews
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          from pathlib import Path
+          from PIL import Image, ImageOps, ImageDraw, ImageFont
+
+          root = Path(".")
+          logo_path = root / "hyperia-city/purple-steel/rks-logo.png"
+          logo = Image.open(logo_path).convert("RGBA") if logo_path.exists() else None
+
+          for cfg_path in root.rglob("preview-source.json"):
+              cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+              vid = cfg["video_id"]
+              out = cfg_path.parent / cfg.get("output", "video/discord-preview-v1.jpg")
+              out.parent.mkdir(parents=True, exist_ok=True)
+              tmp = cfg_path.parent / ".youtube-thumb.jpg"
+
+              ok = False
+              for quality in ("maxresdefault", "hqdefault"):
+                  url = f"https://i.ytimg.com/vi/{vid}/{quality}.jpg"
+                  try:
+                      urllib.request.urlretrieve(url, tmp)
+                      with Image.open(tmp) as test:
+                          if test.width >= 400:
+                              ok = True
+                              break
+                  except Exception:
+                      pass
+              if not ok:
+                  raise RuntimeError(f"Unable to retrieve YouTube thumbnail for {vid}")
+
+              with Image.open(tmp) as src:
+                  bg = ImageOps.fit(src.convert("RGB"), (1200, 630), method=Image.Resampling.LANCZOS)
+
+              layer = Image.new("RGBA", bg.size, (0,0,0,0))
+              d = ImageDraw.Draw(layer)
+              d.rectangle((0, 455, 1200, 630), fill=(5,9,18,205))
+              d.rectangle((0, 0, 1200, 630), outline=(237,196,132,120), width=4)
+
+              if logo:
+                  lg = logo.copy()
+                  lg.thumbnail((125,125), Image.Resampling.LANCZOS)
+                  layer.alpha_composite(lg, (38, 480))
+
+              try:
+                  font_b = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 42)
+                  font_s = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+              except Exception:
+                  font_b = font_s = ImageFont.load_default()
+
+              x = 190 if logo else 42
+              d.text((x, 484), cfg.get("title","RKS · LORCANA"), font=font_b, fill=(247,249,255,255))
+              d.text((x, 548), cfg.get("subtitle","Analyse RKS"), font=font_s, fill=(237,196,132,255))
+
+              Image.alpha_composite(bg.convert("RGBA"), layer).convert("RGB").save(out, "JPEG", quality=91, optimize=True)
+              tmp.unlink(missing_ok=True)
+              print(out)
+          PY
+      - name: Commit generated previews
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '**/video/discord-preview-v1.jpg'
+          if git diff --cached --quiet; then
+            echo "No preview changes"
+          else
+            git commit -m "chore: generate RKS Discord preview"
+            git push
+          fi
