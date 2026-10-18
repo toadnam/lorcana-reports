@@ -65,6 +65,7 @@ $('#genPng').addEventListener('click',async()=>{const btn=$('#genPng'),st=$('#pn
 $('#openPng').addEventListener('click',()=>{if(!pngUrl)return;$('#pngModalImg').src=pngUrl;$('#pngModal').classList.add('open');document.body.style.overflow='hidden'});function closePng(){$('#pngModal').classList.remove('open');document.body.style.overflow=''}$('#closePng').addEventListener('click',closePng);$('#pngModal').addEventListener('click',e=>{if(e.target.id==='pngModal')closePng()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closePng()}});
 const testBoxes=$$('#tests input');let testState={};try{testState=JSON.parse(localStorage.getItem('rks_dragonjonz_tests')||'{}')}catch(e){}testBoxes.forEach((b,i)=>{b.checked=!!testState[i];b.addEventListener('change',()=>{testState[i]=b.checked;try{localStorage.setItem('rks_dragonjonz_tests',JSON.stringify(testState))}catch(e){}})});
 render();
+const __rksQa=new URLSearchParams(location.search);if(__rksQa.get('rksQaLang')==='en')$('#lang').click();if(__rksQa.get('rksQaPng')==='1')setTimeout(()=>$('#genPng').click(),250);
 })();
 </script>
 </body></html>
