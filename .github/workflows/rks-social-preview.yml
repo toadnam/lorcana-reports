@@ -30,52 +30,80 @@ jobs:
           logo_path = root / "hyperia-city/purple-steel/rks-logo.png"
           logo = Image.open(logo_path).convert("RGBA") if logo_path.exists() else None
 
+          def get_fonts():
+              try:
+                  return (
+                      ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 42),
+                      ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24),
+                      ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 62),
+                  )
+              except Exception:
+                  f = ImageFont.load_default()
+                  return f, f, f
+
           for cfg_path in root.rglob("preview-source.json"):
               cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-              vid = cfg["video_id"]
               out = cfg_path.parent / cfg.get("output", "video/discord-preview-v1.jpg")
               out.parent.mkdir(parents=True, exist_ok=True)
-              tmp = cfg_path.parent / ".youtube-thumb.jpg"
+              mode = cfg.get("mode", "youtube")
 
-              ok = False
-              for quality in ("maxresdefault", "hqdefault"):
-                  url = f"https://i.ytimg.com/vi/{vid}/{quality}.jpg"
-                  try:
-                      urllib.request.urlretrieve(url, tmp)
-                      with Image.open(tmp) as test:
-                          if test.width >= 400:
-                              ok = True
-                              break
-                  except Exception:
-                      pass
-              if not ok:
-                  raise RuntimeError(f"Unable to retrieve YouTube thumbnail for {vid}")
-
-              with Image.open(tmp) as src:
-                  bg = ImageOps.fit(src.convert("RGB"), (1200, 630), method=Image.Resampling.LANCZOS)
+              if mode == "youtube" or cfg.get("video_id"):
+                  vid = cfg["video_id"]
+                  tmp = cfg_path.parent / ".youtube-thumb.jpg"
+                  ok = False
+                  for quality in ("maxresdefault", "hqdefault"):
+                      url = f"https://i.ytimg.com/vi/{vid}/{quality}.jpg"
+                      try:
+                          urllib.request.urlretrieve(url, tmp)
+                          with Image.open(tmp) as test:
+                              if test.width >= 400:
+                                  ok = True
+                                  break
+                      except Exception:
+                          pass
+                  if not ok:
+                      raise RuntimeError(f"Unable to retrieve YouTube thumbnail for {vid}")
+                  with Image.open(tmp) as src:
+                      bg = ImageOps.fit(src.convert("RGB"), (1200, 630), method=Image.Resampling.LANCZOS)
+                  tmp.unlink(missing_ok=True)
+              else:
+                  bg = Image.new("RGB", (1200, 630), (7, 12, 22))
+                  d0 = ImageDraw.Draw(bg)
+                  for y in range(630):
+                      c = (7 + int(9*y/629), 12 + int(8*y/629), 22 + int(18*y/629))
+                      d0.line((0,y,1200,y), fill=c)
+                  d0.ellipse((-180, 260, 520, 960), fill=(10, 30, 48))
+                  d0.ellipse((810, -280, 1450, 360), fill=(35, 28, 64))
 
               layer = Image.new("RGBA", bg.size, (0,0,0,0))
               d = ImageDraw.Draw(layer)
-              d.rectangle((0, 455, 1200, 630), fill=(5,9,18,205))
-              d.rectangle((0, 0, 1200, 630), outline=(237,196,132,120), width=4)
+              font_b, font_s, font_h = get_fonts()
 
-              if logo:
-                  lg = logo.copy()
-                  lg.thumbnail((125,125), Image.Resampling.LANCZOS)
-                  layer.alpha_composite(lg, (38, 480))
-
-              try:
-                  font_b = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 42)
-                  font_s = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
-              except Exception:
-                  font_b = font_s = ImageFont.load_default()
-
-              x = 190 if logo else 42
-              d.text((x, 484), cfg.get("title","RKS · LORCANA"), font=font_b, fill=(247,249,255,255))
-              d.text((x, 548), cfg.get("subtitle","Analyse RKS"), font=font_s, fill=(237,196,132,255))
+              if mode == "youtube" or cfg.get("video_id"):
+                  d.rectangle((0, 455, 1200, 630), fill=(5,9,18,205))
+                  d.rectangle((0, 0, 1200, 630), outline=(237,196,132,120), width=4)
+                  if logo:
+                      lg = logo.copy()
+                      lg.thumbnail((125,125), Image.Resampling.LANCZOS)
+                      layer.alpha_composite(lg, (38, 480))
+                  x = 190 if logo else 42
+                  d.text((x, 484), cfg.get("title","RKS · LORCANA"), font=font_b, fill=(247,249,255,255))
+                  d.text((x, 548), cfg.get("subtitle","Analyse RKS"), font=font_s, fill=(237,196,132,255))
+              else:
+                  d.rectangle((0,0,1200,630), outline=(237,196,132,115), width=4)
+                  if logo:
+                      lg = logo.copy()
+                      lg.thumbnail((110,110), Image.Resampling.LANCZOS)
+                      layer.alpha_composite(lg, (55, 48))
+                  left = 190 if logo else 58
+                  d.text((left, 58), cfg.get("kicker","RKS · LORCANA"), font=font_b, fill=(237,196,132,255))
+                  d.text((58, 165), cfg.get("title","HYPERIA CITY"), font=font_h, fill=(247,249,255,255))
+                  d.text((58, 250), cfg.get("subtitle","Analyse RKS"), font=font_s, fill=(190,203,225,255))
+                  d.rounded_rectangle((58,335,680,452), radius=18, fill=(18,27,45,245), outline=(63,80,110,255), width=2)
+                  d.text((82,370), cfg.get("stats","2 MATCHS · 4 DECKLISTS · 241 CARTES"), font=font_b, fill=(247,201,112,255))
+                  d.text((58, 542), cfg.get("footer","Quest World Iconic Clash"), font=font_s, fill=(145,165,196,255))
 
               Image.alpha_composite(bg.convert("RGBA"), layer).convert("RGB").save(out, "JPEG", quality=91, optimize=True)
-              tmp.unlink(missing_ok=True)
               print(out)
           PY
       - name: Commit generated previews
